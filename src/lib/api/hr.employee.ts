@@ -15,7 +15,7 @@ export function apiEmployeeProfileUpdate(
   });
 }
 
-export function apiEmployeeDetails(id: string, query?) {
+export function apiEmployeeDetails(id: string, query?: any) {
   return api({
     method: 'GET',
     url: ENDPOINTS.hr_employee.details(id),

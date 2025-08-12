@@ -18,20 +18,10 @@ export function useLogin() {
         console.error('No access token received');
         throw new Error('No access token received');
       }
-      // console.log('Access Token:', accessToken);
 
       // Step 2: Employee login using the access token
       const employeeResponse = await apiEmployeeLogin(payload, accessToken);
-      console.log(employeeResponse);
 
-      // if (
-      //   employeeResponse.status === 403 &&
-      //   employeeResponse.data?.error?.type === 'device_mismatch'
-      // ) {
-      //   console.log('Device mismatch:', employeeResponse.data.error.message);
-      //   // router.push('/device-mismatch');
-      //   throw new Error(employeeResponse.data.error.message);
-      // }
 
       if (!employeeResponse.data) {
         throw new Error('No employee data received');
@@ -42,18 +32,17 @@ export function useLogin() {
       }
 
       const employee = employeeResponse.data.data;
-      // console.log('Employee Data:', JSON.stringify(employee, null, 2));
 
       setUser({ access_token: accessToken, id: employee.employee_id });
 
       // Step 3: Return the employee data
       return employeeResponse.data;
     },
-    onError: (error: any)  => {
-      if(error.response.status && error.response.status === 403){
-        if(error.response.data.error.type === 'device_mismatch')
-        console.log( "not your device", error.response.data.error.message)
-      router.push('/login/device_mismatch');
+    onError: (error: any) => {
+      if (error.response.status && error.response.status === 403) {
+        if (error.response.data.error.type === 'device_mismatch')
+          console.log("not your device", error.response.data.error.message)
+        router.push('/login/device_mismatch');
       }
       // onError(error);
       // Optionally, you can handle specific error cases here
@@ -90,9 +79,6 @@ export function useLogout() {
         text1: 'Logout successful',
       });
 
-      // Optionally, redirect to login page or perform other actions
-      // after successful logout.
-      // router.push('/login');
     },
   });
 
