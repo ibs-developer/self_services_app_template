@@ -2,7 +2,7 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 import Toast from 'react-native-toast-message';
 import { apiUploadAttachment } from '@/lib/api/ir.attachment.api';
 import onError from './error';
-import { TIr_Attchment } from '@/types/attachment';
+import { TIr_Attchment } from '@/types/ir/attachment';
 
 export function useUploadAttachment() {
   const mutation = useMutation({

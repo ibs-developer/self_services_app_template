@@ -1,4 +1,4 @@
-import { TActivityMixin, TDatabaseAuditDetails, TMailThread, OdooIdNameTuple, OdooFalseOr } from './global';
+import { TActivityMixin, TDatabaseAuditDetails, TMailThread, OdooIdNameTuple, OdooFalseOr } from '../global';
 
 export type THrLeave = {
   id: number;
@@ -70,3 +70,5 @@ export type THrLeave = {
 } & TActivityMixin &
   TMailThread &
   TDatabaseAuditDetails;
+
+

@@ -1,4 +1,4 @@
-import { TDatabaseAuditDetails } from './global';
+import { TDatabaseAuditDetails } from '../global';
 
 export type THrLeaveType = {
   id: number;

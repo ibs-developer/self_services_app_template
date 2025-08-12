@@ -1,9 +1,8 @@
 import ENDPOINTS from '@/constants/ENDPOINTS';
 import api from './axiosConfig';
-import { OdooResponse } from '@/types/response';
-import { THrLoan, THrLoanCreate, THrLoanUpdate } from '@/types/hr.loan';
+import { OdooResponse, THrLoan, THrLoanCreate, THrLoanUpdate } from '@/types/index';
 
-export function apiLoanList(query? : any) {
+export function apiLoanList(query?: any) {
   return api<OdooResponse<THrLoan>>({
     method: 'GET',
     url: ENDPOINTS.hr.loan.list,
