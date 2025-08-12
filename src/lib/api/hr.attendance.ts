@@ -1,9 +1,8 @@
 import ENDPOINTS from '@/constants/ENDPOINTS';
 import api from './axiosConfig';
-import { THrAttendance } from '@/types/hr.attendance';
-import { OdooResponse } from '@/types/response';
+import { THrAttendance, OdooResponse } from '@/types/index';
 
-export function apiAttendanceList(query?) {
+export function apiAttendanceList(query?: any) {
   return api({
     method: 'GET',
     url: ENDPOINTS.hr.attendance.list,

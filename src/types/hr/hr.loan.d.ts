@@ -4,7 +4,7 @@ import {
   TActivityMixin,
   TMailThread,
   TDatabaseAuditDetails,
-} from './global';
+} from '../global';
 
 export type THrLoan = {
   id: number;

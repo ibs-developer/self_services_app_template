@@ -1,7 +1,9 @@
-import { Odoo_Domain, db_name } from '@env';
+import { Odoo_Domain, db_name, admin_email, admin_password } from '@env';
 
 export const odoo = Odoo_Domain;
 export const db = db_name;
+export const email = admin_email;
+export const password = admin_password;
 
 const ENDPOINTS = {
   login: '/api/v1/auth/token',

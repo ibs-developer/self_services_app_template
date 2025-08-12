@@ -1,4 +1,4 @@
-import { TMailThread } from './global';
+import { TMailThread, OdooFalseOr, OdooIdNameTuple } from '../global';
 
 export type THrAttendance = {
   id: number;
@@ -29,3 +29,4 @@ export type THrAttendance = {
   write_uid: [number, string];
   write_date: string;
 } & TMailThread;
+
