@@ -2,7 +2,7 @@ import {
   apiEmployeeDetails,
   apiEmployeeProfileUpdate,
 } from "@/lib/api/hr.employee";
-import { TUserDetails } from "@/types/user";
+import { TUserDetails } from "@/types/index";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useLoginStore } from "../loginStore";
 import onError from "./error";

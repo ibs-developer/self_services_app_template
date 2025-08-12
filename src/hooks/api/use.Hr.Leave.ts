@@ -7,29 +7,27 @@ import {
   apiLeaveTypes,
   apiUpdateLeave,
 } from '@/lib/api/hr.leave.api';
-import { THrLeave } from '@/types/hr.leave';
-import { useQueryString } from '../useQueryString';
+import { THrLeave } from '@/types/hr/hr.leave';
 import { useLoginStore } from '../loginStore';
 import onError from './error';
 
 export function useHrLeaveList(query?) {
-  const { data, refetch ,isLoading } = useQuery({
+  const { data, ...param } = useQuery({
     queryFn: () => apiLeaveList(query),
     queryKey: ['hrLeave', query],
   });
 
-  return { data: data?.data.data, count: data?.data.count, refetch , isLoading };
+  return { data: data?.data.data,...param };
 }
 
-export function useHrLeaveDetail(id: string) {
-  const [query] = useQueryString();
+export function useHrLeaveDetail(id: string, query?) {
 
-  const { data, refetch, isLoading } = useQuery({
+  const { data, ...param } = useQuery({
     queryFn: () => apiLeaveDetail(id, query),
     queryKey: ['hrLeave', id],
   });
 
-  return { data: data?.data.data, refetch, isLoading };
+  return { data: data?.data.data, ...param };
 }
 
 export function useCreateHrLeave(onSuccess: () => void) {
@@ -55,13 +53,8 @@ export function useCreateHrLeave(onSuccess: () => void) {
 
 export function useUpdateHrLeave(onSuccess: () => void) {
   const mutation = useMutation({
-    mutationFn: (project: Partial<THrLeave>) => {
-      const { id, ...payload } = project;
-      if (!id) {
-        return Promise.reject('Project ID is required');
-      }
-
-      return apiUpdateLeave(id.toString(), payload);
+    mutationFn: (payload: Partial<THrLeave>) => {
+      return apiUpdateLeave(payload);
     },
 
     onSuccess,
@@ -89,19 +82,19 @@ export function useDeleteHrLeave(onSuccess: () => void) {
 }
 
 export function useHrLeaveTypes( query?) {
-  const { data, refetch, isLoading , isError, error } = useQuery({
+  const { data, ...param } = useQuery({
     queryFn: () => apiLeaveTypes(query),
     queryKey: ['hrLeaveTypes'],
   });
 
-  if (isError) {
-    console.error('Error fetching leave types:', error);
-    if (error && typeof error === 'object') {
-      Object.entries(error).forEach(([key, value]) => {
+  if (param.isError) {
+    console.error('Error fetching leave types:', param.error);
+    if (param.error && typeof param.error === 'object') {
+      Object.entries(param.error).forEach(([key, value]) => {
         console.error(`error.${key}:`, value);
       });
     }
   }
 
-  return { data: data?.data.data, refetch, isLoading , isError };
+  return { data: data?.data.data, ...param };
 }

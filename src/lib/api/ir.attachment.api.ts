@@ -1,4 +1,4 @@
-import { TIr_Attchment } from '@/types/attachment';
+import { TIr_Attchment } from '@/types/index';
 import api from './axiosConfig';
 
 import ENDPOINTS from '@/constants/ENDPOINTS';

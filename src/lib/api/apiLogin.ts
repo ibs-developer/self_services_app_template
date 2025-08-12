@@ -1,10 +1,9 @@
-import ENDPOINTS, { odoo } from "@/constants/ENDPOINTS";
+import ENDPOINTS, { odoo,db,email,password } from "@/constants/ENDPOINTS";
 import {
   TForgetPasswordForm,
   TloginForm,
   TResetPasswordForm,
 } from "@/types/global";
-import { admin_email, admin_password, db } from "@env";
 import axios from "axios";
 import api from "./axiosConfig";
 
@@ -14,8 +13,8 @@ export function apiLogin() {
     url: ENDPOINTS.login,
     headers: {
       db: db,
-      username: admin_email,
-      password: admin_password,
+      username: email,
+      password: password,
     },
     baseURL: odoo,
   });

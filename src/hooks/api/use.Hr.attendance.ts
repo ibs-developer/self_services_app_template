@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { THrAttendance } from '@/types/hr.attendance';
+import { THrAttendance } from '@/types/index';
 import { useLoginStore } from '../loginStore';
 import onError from './error';
 import { apiAttendanceDetail, apiAttendanceList, apiCreateAttendance, apiUpdateAttendance } from '@/lib/api/hr.attendance';
