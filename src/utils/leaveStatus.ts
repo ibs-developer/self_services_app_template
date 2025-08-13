@@ -1,5 +1,5 @@
 import { format } from 'date-fns';
-import { THrLeave } from '~/types/hr.leave';
+import { THrLeave } from '@/types/index';
 
 export const getStatusBgColor = (state: string) => {
   switch (state) {

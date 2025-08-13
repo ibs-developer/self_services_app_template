@@ -27,7 +27,7 @@ export function useHrLeaveDetail(id: string, query: Record<string, string>) {
     queryKey: ["hrLeave", id],
   });
 
-  return { data: data?.data.data, refetch, isLoading };
+  return { data: data?.data.data, ...param };
 }
 
 export function useCreateHrLeave(onSuccess: () => void) {

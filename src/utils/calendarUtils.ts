@@ -1,5 +1,5 @@
 // calendarUtils.ts
-import { THrLeave, THrLeaveType } from '~/types/global';
+import { THrLeave, THrLeaveType } from '@/types/index';
 
 // Sample mapping from odoo colors or status to hex (customize as needed)
 const colorMap: { [key: string]: string } = {

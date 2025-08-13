@@ -1,7 +1,5 @@
 import ENDPOINTS from "@/constants/ENDPOINTS";
-import { THrLeave } from "@/types/hr.leave";
-import { THrLeaveType } from "@/types/hr.type";
-import { OdooListResponse, OdooShowResponse } from "@/types/response";
+import { THrLeave, THrLeaveType, OdooListResponse, OdooShowResponse } from "@/types/index";
 import api from "./axiosConfig";
 
 export function apiLeaveList(query: Record<string, string>) {
@@ -35,7 +33,7 @@ export function apiCreateLeave(payload: Partial<THrLeave>, userId: string) {
   });
 }
 
-export function apiLeaveTypes(query) {
+export function apiLeaveTypes(query?: any) {
   return api<OdooListResponse<THrLeaveType>>({
     method: "GET",
     url: ENDPOINTS.hr.leave.types.list,

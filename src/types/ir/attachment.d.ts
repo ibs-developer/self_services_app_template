@@ -6,5 +6,4 @@ export type TIr_Attchment = {
   datas: string; // base64
   raw: string; // raw
   public: boolean;
-  res_model: string;
 };
