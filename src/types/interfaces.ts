@@ -1,6 +1,9 @@
 import { Href } from "expo-router";
 import { ReactNode } from "react";
 import { ImageProps, PressableProps, TextInputProps } from "react-native";
+import { THrAttendance } from "./hr.attendance";
+import { THrLeave } from "./hr.leave";
+import { THrLoan } from "./hr.loan";
 
 export interface IInput extends TextInputProps {
   labelClassName?: string;
@@ -54,4 +57,40 @@ export interface IconItem {
   route: Href;
   className?: string;
   textClassName?: string;
+}
+export interface IAttendanceCard {
+  attendance: THrAttendance;
+}
+export interface ILoanCard extends PressableProps {
+  loan: THrLoan;
+}
+export interface IFilterButton {
+  active?: boolean;
+  onPress: () => void;
+  title: string;
+  className?: string;
+}
+export interface IFiltersProps {
+  activeFilter: string;
+  onFilterChange: (filter: string) => void;
+  filters: { key: string; label: string }[];
+  className?: string;
+}
+export interface IStateCard extends PressableProps {
+  className?: string;
+  textClassName?: string;
+  name?: string;
+  count?: number;
+}
+export interface IBadge {
+  className?: string;
+  textClassName?: string;
+  name?: string;
+}
+export interface IPart {
+  title: string;
+  value: string | number;
+}
+export interface ILeaveCard extends PressableProps {
+  leave: THrLeave;
 }

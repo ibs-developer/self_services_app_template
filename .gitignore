@@ -38,3 +38,7 @@ app-example
 # local environment variables
 .env
 /env.d.ts
+
+# vscode
+.vscode/
+*.code-workspace

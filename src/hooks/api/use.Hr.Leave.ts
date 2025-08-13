@@ -1,4 +1,3 @@
-import { useMutation, useQuery } from '@tanstack/react-query';
 import {
   apiCreateLeave,
   apiDeleteLeave,
@@ -6,27 +5,26 @@ import {
   apiLeaveList,
   apiLeaveTypes,
   apiUpdateLeave,
-} from '@/lib/api/hr.leave.api';
-import { THrLeave } from '@/types/hr.leave';
-import { useQueryString } from '../useQueryString';
-import { useLoginStore } from '../loginStore';
-import onError from './error';
+} from "@/lib/api/hr.leave.api";
+import { THrLeave } from "@/types/hr.leave";
+import { useMutation, useQuery } from "@tanstack/react-query";
+
+import { useLoginStore } from "../loginStore";
+import onError from "./error";
 
 export function useHrLeaveList(query?) {
-  const { data, refetch ,isLoading } = useQuery({
+  const { data, refetch, isLoading } = useQuery({
     queryFn: () => apiLeaveList(query),
-    queryKey: ['hrLeave', query],
+    queryKey: ["hrLeave", query],
   });
 
-  return { data: data?.data.data, count: data?.data.count, refetch , isLoading };
+  return { data: data?.data.data, count: data?.data.count, refetch, isLoading };
 }
 
-export function useHrLeaveDetail(id: string) {
-  const [query] = useQueryString();
-
+export function useHrLeaveDetail(id: string, query: Record<string, string>) {
   const { data, refetch, isLoading } = useQuery({
     queryFn: () => apiLeaveDetail(id, query),
-    queryKey: ['hrLeave', id],
+    queryKey: ["hrLeave", id],
   });
 
   return { data: data?.data.data, refetch, isLoading };
@@ -36,7 +34,7 @@ export function useCreateHrLeave(onSuccess: () => void) {
   const { user } = useLoginStore();
 
   if (!user) {
-    throw new Error('User is not logged in');
+    throw new Error("User is not logged in");
   }
 
   const mutation = useMutation({
@@ -58,7 +56,7 @@ export function useUpdateHrLeave(onSuccess: () => void) {
     mutationFn: (project: Partial<THrLeave>) => {
       const { id, ...payload } = project;
       if (!id) {
-        return Promise.reject('Project ID is required');
+        return Promise.reject("Project ID is required");
       }
 
       return apiUpdateLeave(id.toString(), payload);
@@ -88,20 +86,20 @@ export function useDeleteHrLeave(onSuccess: () => void) {
   return { doProjectDelete: mutate, ...mutation };
 }
 
-export function useHrLeaveTypes( query?) {
-  const { data, refetch, isLoading , isError, error } = useQuery({
+export function useHrLeaveTypes(query?) {
+  const { data, refetch, isLoading, isError, error } = useQuery({
     queryFn: () => apiLeaveTypes(query),
-    queryKey: ['hrLeaveTypes'],
+    queryKey: ["hrLeaveTypes"],
   });
 
   if (isError) {
-    console.error('Error fetching leave types:', error);
-    if (error && typeof error === 'object') {
+    console.error("Error fetching leave types:", error);
+    if (error && typeof error === "object") {
       Object.entries(error).forEach(([key, value]) => {
         console.error(`error.${key}:`, value);
       });
     }
   }
 
-  return { data: data?.data.data, refetch, isLoading , isError };
+  return { data: data?.data.data, refetch, isLoading, isError };
 }
