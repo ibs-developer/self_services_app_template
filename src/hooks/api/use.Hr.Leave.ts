@@ -6,7 +6,7 @@ import {
   apiLeaveTypes,
   apiUpdateLeave,
 } from "@/lib/api/hr.leave.api";
-import { THrLeave } from "@/types/hr.leave";
+import { THrLeave } from "@/types/hr/hr.leave";
 import { useMutation, useQuery } from "@tanstack/react-query";
 
 import { useLoginStore } from "../loginStore";

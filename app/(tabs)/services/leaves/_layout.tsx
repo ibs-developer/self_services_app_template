@@ -8,6 +8,7 @@ export default function TimeOffLayout() {
       }}
     >
       <Stack.Screen name="index" />
+      <Stack.Screen name="new_leave" />
     </Stack>
   );
 }

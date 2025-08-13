@@ -1,14 +1,8 @@
 import React from "react";
-import { Text, View } from "react-native";
-import NavigateHeder from "@/components/reusable/navigationHeader";
+import { View } from "react-native";
 
 const NewLoan = () => {
-  return (
-    <View className="flex-1 bg-background">
-      <NavigateHeder title="New Loan" />
-      <Text> New Loan </Text>
-    </View>
-  );
+  return <View className="flex-1 bg-background"></View>;
 };
 
 export default NewLoan;
