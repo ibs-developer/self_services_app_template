@@ -1,19 +1,20 @@
+import FilterKeys from "@/components/reusable/filterKeys";
 import NavigationHeader from "@/components/reusable/navigationHeader";
 import LeaveCard from "@/components/services/leaves/leaveCard";
+import LeavesStates from "@/components/services/leaves/leavesStates";
 import { useEmployeeDetails } from "@/hooks/api/use.Hr.Employee";
 import { useHrLeaveList } from "@/hooks/api/use.Hr.Leave";
 import { useLoginStore } from "@/hooks/loginStore";
 import { IconPlus } from "@tabler/icons-react-native";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
-import { FlatList, Pressable, View } from "react-native";
+import { FlatList, Pressable, Text, View } from "react-native";
 
 const Leaves = () => {
   const { push } = useRouter();
+  const { user } = useLoginStore();
   const [activeFilter, setActiveFilter] = useState("upcoming");
   const [refreshing, setRefreshing] = useState(false);
-
-  const { user } = useLoginStore();
 
   // Fetch leave data
   const {
@@ -23,37 +24,12 @@ const Leaves = () => {
   } = useHrLeaveList({
     domain: `[["employee_id", "=",${user?.id}]]`,
   });
-
   const { data: employee, refetch: refetchEmployee } = useEmployeeDetails({
     fields: "allocation_remaining_display",
   });
 
   const leaveData = leaves || [];
-
-  // Calculate stats from the leave data
-  const calculateStats = () => {
-    const stats = {
-      balance: employee?.allocation_remaining_display || "0",
-      approved: 0,
-      pending: 0,
-      cancelled: 0,
-    };
-
-    if (leaveData && leaveData.length > 0) {
-      stats.approved = leaveData.filter(
-        (leave) => leave.state === "validate" || leave.state === "validate1"
-      ).length;
-      stats.pending = leaveData.filter(
-        (leave) => leave.state === "confirm"
-      ).length;
-      stats.cancelled = leaveData.filter(
-        (leave) => leave.state === "refuse" || leave.state === "cancel"
-      ).length;
-    }
-
-    return stats;
-  };
-
+  33;
   // Filter leaves based on active filter
   const getFilteredLeaves = () => {
     if (!leaveData || leaveData.length === 0) {
@@ -89,6 +65,15 @@ const Leaves = () => {
     await Promise.all([refetch(), refetchEmployee()]);
     setRefreshing(false);
   };
+  if (isLoading) {
+    return (
+      <View className="flex-1 bg-background justify-center items-center">
+        <Text className="text-gray-500 dark:text-gray-400">
+          Loading leaves...
+        </Text>
+      </View>
+    );
+  }
 
   return (
     <View className="flex-1 bg-backGround">
@@ -108,9 +93,33 @@ const Leaves = () => {
         }
       />
       <FlatList
-        data={leaves}
+        contentContainerClassName="p-4 gap-4"
+        data={getFilteredLeaves()}
+        refreshing={refreshing}
+        onRefresh={handleRefresh}
         keyExtractor={(item) => item.id.toString()}
+        ListHeaderComponent={
+          <View>
+            <LeavesStates leaves={leaveData} employee={employee} />
+            <FilterKeys
+              className="my-5"
+              activeFilter={activeFilter}
+              onFilterChange={setActiveFilter}
+              filters={[
+                { key: "upcoming", label: "Upcoming" },
+                { key: "past", label: "Past" },
+              ]}
+            />
+          </View>
+        }
         renderItem={({ item: leave }) => <LeaveCard leave={leave} />}
+        ListEmptyComponent={
+          <View className="flex-1 justify-center items-center py-8">
+            <Text className="text-gray-500 dark:text-gray-400 text-center">
+              No leave requests found
+            </Text>
+          </View>
+        }
       />
     </View>
   );

@@ -1,9 +1,9 @@
 import { Href } from "expo-router";
 import { ReactNode } from "react";
 import { ImageProps, PressableProps, TextInputProps } from "react-native";
-import { THrAttendance } from "./hr.attendance";
-import { THrLeave } from "./hr.leave";
-import { THrLoan } from "./hr.loan";
+import { THrAttendance } from "./hr/hr.attendance";
+import { THrLeave } from "./hr/hr.leave";
+import { THrLoan } from "./hr/hr.loan";
 
 export interface IInput extends TextInputProps {
   labelClassName?: string;
@@ -93,4 +93,21 @@ export interface IPart {
 }
 export interface ILeaveCard extends PressableProps {
   leave: THrLeave;
+}
+export interface ILeaveStates {
+  leaves: THrLeave[];
+  employee?: {
+    allocation_remaining_display?: string;
+  };
+}
+export interface IDetaleField{
+  title: string;
+  value?: string | number;
+  badge?: {
+    name: string;
+    state: string;
+  };
+  className?: string;
+  valueClassName?: string;
+  badgeClassName?: string;
 }

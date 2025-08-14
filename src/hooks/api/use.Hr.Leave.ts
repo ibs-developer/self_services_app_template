@@ -21,13 +21,13 @@ export function useHrLeaveList(query?) {
   return { data: data?.data.data, count: data?.data.count, refetch, isLoading };
 }
 
-export function useHrLeaveDetail(id: string, query: Record<string, string>) {
-  const { data, refetch, isLoading } = useQuery({
+export function useHrLeaveDetail(id: string, query?: Record<string, string>) {
+  const { data, refetch, isLoading, ...params } = useQuery({
     queryFn: () => apiLeaveDetail(id, query),
     queryKey: ["hrLeave", id],
   });
 
-  return { data: data?.data.data, ...param };
+  return { data: data?.data.data, refetch, isLoading, ...params };
 }
 
 export function useCreateHrLeave(onSuccess: () => void) {
