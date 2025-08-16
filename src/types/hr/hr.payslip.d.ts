@@ -109,7 +109,7 @@ export type TPayslipAccounting = {
  * Complete payslip details from API
  * Used for both list and detail responses as they return the same structure
  */
-export type TPayslipDetails =
+export type THrPayslip =
     // Core system mixins
     TActivityMixin &
     TMailThread &

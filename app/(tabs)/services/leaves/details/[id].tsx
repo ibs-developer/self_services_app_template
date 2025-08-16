@@ -34,6 +34,7 @@ const LeaveDetails = () => {
         <DetaileField
           title="Leave Type"
           value={getLeaveTypeName(leave)}
+          section="leave"
           badge={{
             name: getStatusLabel(leave.state),
             state: leave.state,

@@ -16,9 +16,11 @@ import * as Location from "expo-location";
 import { getDistance } from "geolib";
 import React, { useEffect, useState } from "react";
 import {
+  Alert,
   Animated,
   NativeScrollEvent,
   NativeSyntheticEvent,
+  Platform,
   ScrollView,
   Text,
   useAnimatedValue,
@@ -156,6 +158,13 @@ const Home = () => {
     }
   }, [employee]);
 
+  // useEffect(() => {
+  //   if (Platform.OS === "ios") {
+  //     Alert.alert("Now The App is running on iOS");
+  //   } else {
+  //     Alert.alert("Now The App is running on Android");
+  //   }
+  // }, []);
   if (isLoading)
     return (
       <View className="flex-1 items-center justify-center">

@@ -1,9 +1,18 @@
 import { IDetaleField } from "@/types";
 import { getStatusBgColor, getStatusTextColor } from "@/utils/leaveStatus";
+import {
+  getLoanStatusBgColor,
+  getLoanStatusTextColor,
+} from "@/utils/loanStatus";
 import React, { FC } from "react";
 import { Text, View } from "react-native";
+import Badge from "./badge";
 
-const DetaileField: FC<IDetaleField> = ({ title, value, badge }) => {
+const DetaileField: FC<IDetaleField> = ({ title, value, badge, section }) => {
+  const loan = section === "loan";
+  const leave = section === "leave";
+
+
   return (
     <View
       style={{ borderBottomColor: "#d1d5db" }}
@@ -15,13 +24,12 @@ const DetaileField: FC<IDetaleField> = ({ title, value, badge }) => {
         <Text className="text-base font-medium">{value || "---"}</Text>
       </View>
       {badge ? (
-        <View
-          className={`border px-2 py-1 rounded-2xl ${getStatusBgColor(badge.state)}`}
-        >
-          <Text className={`${getStatusTextColor(badge.state)}`}>
-            {badge.name}
-          </Text>
-        </View>
+        <Badge
+          className={`px-3 py-1 ${loan ? getLoanStatusBgColor(badge.state) : leave ? getStatusBgColor(badge.state) : ""}`}
+          textClassName={`text-xs font-medium
+                  ${loan ? getLoanStatusTextColor(badge.state) : leave ? getStatusTextColor(badge.state) : ""}`}
+          name={badge.name}
+        />
       ) : null}
     </View>
   );
