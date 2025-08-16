@@ -43,7 +43,7 @@ export type TPayslipWages = {
  * Payslip state and processing info
  */
 export type TPayslipState = {
-    state: 'draft' | 'verify' | 'done' | 'cancel';
+    state: "draft" | "verify" | "done" | "cancel" | "paid";
     paid: boolean;
     credit_note: boolean;
     has_refund_slip: boolean;
