@@ -52,7 +52,7 @@ export function useLogin() {
       // }
     },
     onSuccess: () => {
-      router.push('/(tabs)/home');
+      router.push('/(tabs)');
       Toast.show({
         type: 'success',
         text1: 'Login successful',

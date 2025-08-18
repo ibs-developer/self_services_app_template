@@ -2,6 +2,7 @@ import Button from "@/components/reusable/button";
 import { ControlledInput } from "@/components/reusable/input";
 import { useLogin } from "@/hooks/api/useLogin";
 import { loginForm } from "@/types/schemas";
+import getDeviceId from "@/utils/GetDeviceInfo";
 import { Link } from "expo-router";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -30,7 +31,8 @@ const Login = () => {
 
   const onSubmit = async (data: loginForm) => {
     try {
-      const device_id = "470c3722f1ae7288";
+      const device_id = await getDeviceId();
+      // "470c3722f1ae7288";
       if (!device_id) {
         Toast.show({
           type: "error",

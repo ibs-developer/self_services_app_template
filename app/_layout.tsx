@@ -23,7 +23,7 @@ export default function RootLayout() {
       <GestureHandlerRootView>
         <SafeAreaProvider>
           <PaperProvider>
-            <SafeAreaView className="flex-1">
+            <SafeAreaView style={{ flex: 1 }} className="flex-1">
               <Stack screenOptions={{ headerShown: false }}>
                 <Stack.Screen name="(tabs)" />
                 <Stack.Screen name="login" />
