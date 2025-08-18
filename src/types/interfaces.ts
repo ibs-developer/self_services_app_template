@@ -2,10 +2,10 @@ import { Href } from "expo-router";
 import { ReactNode } from "react";
 import { Control, ControllerProps, FieldValues, Path } from "react-hook-form";
 import { ImageProps, PressableProps, TextInputProps } from "react-native";
+import { THrPayslip } from "./hr";
 import { THrAttendance } from "./hr/hr.attendance";
 import { THrLeave } from "./hr/hr.leave";
 import { THrLoan } from "./hr/hr.loan";
-import { THrPayslip } from "./hr";
 
 export interface IInput extends Omit<TextInputProps, "defaultValue"> {
   labelClassName?: string;
@@ -21,6 +21,12 @@ export interface IControlledInput<T extends FieldValues = FieldValues>
   rules?: ControllerProps<T>["rules"];
   defaultValue?: any;
 }
+export interface ITextArea<T extends FieldValues = FieldValues> extends IInput {
+  control?: Control<T>;
+  name: Path<T>;
+  rules?: ControllerProps<T>["rules"];
+  defaultValue?: any;
+}
 
 export interface IInputDate<T extends FieldValues = FieldValues>
   extends IInput {
@@ -31,6 +37,15 @@ export interface IInputDate<T extends FieldValues = FieldValues>
   icon?: ReactNode;
   date?: Date;
 }
+export interface IInputSelect<T extends FieldValues = FieldValues>
+  extends IInput,
+    IControlledInput {
+  selections?: { id: any; name: string; value: string }[];
+  string?:boolean
+}
+export interface ICheckbox<T extends FieldValues = FieldValues>
+  extends IInput,
+    IControlledInput {}
 
 export interface IEncryptedPassword {
   isVisible: boolean;
@@ -135,5 +150,5 @@ export interface IDetaleField {
   section?: "leave" | "loan";
 }
 export interface IPayslipCard extends PressableProps {
-  payslip: THrPayslip
+  payslip: THrPayslip;
 }

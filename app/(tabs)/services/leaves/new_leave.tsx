@@ -1,10 +1,15 @@
+import NavigationHeader from "@/components/reusable/navigationHeader";
+import LeaveCreationForm from "@/components/services/leaves/leaveCreationForm";
 import React from "react";
-import { Text, View } from "react-native";
+import { ScrollView, View } from "react-native";
 
 const NewLeave = () => {
   return (
-    <View>
-      <Text>NewLeave</Text>
+    <View className="flex-1">
+      <NavigationHeader title="New Leave" />
+      <ScrollView>
+        <LeaveCreationForm />
+      </ScrollView>
     </View>
   );
 };
