@@ -1,8 +1,8 @@
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { apiAttendanceDetail, apiAttendanceList, apiCreateAttendance, apiUpdateAttendance } from '@/lib/api/hr/hr.attendance';
 import { THrAttendance } from '@/types/index';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { useLoginStore } from '../loginStore';
 import onError from './error';
-import { apiAttendanceDetail, apiAttendanceList, apiCreateAttendance, apiUpdateAttendance } from '@/lib/api/hr.attendance';
 
 export function useHrAttendanceList(query?) {
   const { data, refetch, isFetched, isSuccess, error, isLoading, isRefetching } = useQuery({
@@ -21,7 +21,7 @@ export function useHrAttendanceList(query?) {
 
   // console.log('useHrAttendanceList', data);
 
-  return { data: data?.data.data, refetch, isFetched, isSuccess, isLoading,isRefetching };
+  return { data: data?.data.data, refetch, isFetched, isSuccess, isLoading, isRefetching };
 }
 
 export function useHrAttendanceDetail(id: string, query?) {

@@ -1,5 +1,5 @@
 import ENDPOINTS from '@/constants/ENDPOINTS';
-import api from './axiosConfig';
+import api from '../axiosConfig';
 
 export function apiEmployeeProfileUpdate(
   id: string,

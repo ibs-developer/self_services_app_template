@@ -1,12 +1,12 @@
-import { useMutation, useQuery } from '@tanstack/react-query';
 import {
-  apiLoanList,
-  apiLoanDetail,
   apiCreateLoan,
-  apiUpdateLoan,
   apiDeleteLoan,
-} from '@/lib/api/hr.loan';
+  apiLoanDetail,
+  apiLoanList,
+  apiUpdateLoan,
+} from '@/lib/api/hr/hr.loan';
 import { THrLoanCreate, THrLoanUpdate } from '@/types/hr/hr.loan';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { useLoginStore } from '../loginStore';
 import onError from './error';
 

@@ -1,6 +1,6 @@
 import ENDPOINTS from "@/constants/ENDPOINTS";
-import { THrLeave, THrLeaveType, OdooListResponse, OdooShowResponse } from "@/types/index";
-import api from "./axiosConfig";
+import { OdooListResponse, OdooShowResponse, THrLeave, THrLeaveType } from "@/types/index";
+import api from "../axiosConfig";
 
 export function apiLeaveList(query: Record<string, string>) {
   return api<OdooListResponse<THrLeave>>({

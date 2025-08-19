@@ -1,6 +1,6 @@
 import ENDPOINTS from '@/constants/ENDPOINTS';
-import api from './axiosConfig';
-import { THrAttendance, OdooResponse } from '@/types/index';
+import { OdooResponse, THrAttendance } from '@/types/index';
+import api from '../axiosConfig';
 
 export function apiAttendanceList(query?: any) {
   return api({

@@ -1,7 +1,7 @@
 import ENDPOINTS from "@/constants/ENDPOINTS";
-import api from "./axiosConfig";
+import api from "../axiosConfig";
 
-export function apiPayslipList(query? : any) {
+export function apiPayslipList(query?: any) {
   return api({
     method: 'GET',
     url: ENDPOINTS.hr.payslip.list,

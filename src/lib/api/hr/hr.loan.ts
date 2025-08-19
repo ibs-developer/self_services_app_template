@@ -1,6 +1,6 @@
 import ENDPOINTS from '@/constants/ENDPOINTS';
-import api from './axiosConfig';
 import { OdooResponse, THrLoan, THrLoanCreate, THrLoanUpdate } from '@/types/index';
+import api from '../axiosConfig';
 
 export function apiLoanList(query?: any) {
   return api<OdooResponse<THrLoan>>({

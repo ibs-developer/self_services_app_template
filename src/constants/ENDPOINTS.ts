@@ -1,4 +1,4 @@
-import { Odoo_Domain, db_name, admin_email, admin_password } from '@env';
+import { Odoo_Domain, admin_email, admin_password, db_name } from '@env';
 
 export const odoo = Odoo_Domain;
 export const db = db_name;
@@ -40,6 +40,22 @@ const ENDPOINTS = {
       // update: (id: string) => `/api/v1/resources/hr.payslip/${id}`,
       // delete: (id: string) => `/api/v1/resources/hr.payslip/${id}`,
     },
+  },
+  crm: {
+    lead: {
+      list: '/api/v1/resources/crm.lead',
+      show: (id: string) => `/api/v1/resources/crm.lead/${id}`,
+      create: '/api/v1/resources/crm.lead',
+      update: (id: string) => `/api/v1/resources/crm.lead/${id}`,
+      delete: (id: string) => `/api/v1/resources/crm.lead/${id}`,
+      visit: {
+        list: '/api/v1/resources/crm.lead.visit',
+        show: (id: string) => `/api/v1/resources/crm.lead.visit/${id}`,
+        create: '/api/v1/resources/crm.lead.visit',
+        update: (id: string) => `/api/v1/resources/crm.lead.visit/${id}`,
+      },
+    },
+
   },
   ir: {
     attachment: {

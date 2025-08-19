@@ -1,8 +1,8 @@
-import { useQuery } from '@tanstack/react-query';
 import {
-  apiPayslipList,
   apiPayslipDetail,
-} from '@/lib/api/hr.payslip';
+  apiPayslipList,
+} from '@/lib/api/hr/hr.payslip';
+import { useQuery } from '@tanstack/react-query';
 
 export function useHrPayslipList(query?: Record<string, any>) {
   const {
@@ -16,7 +16,7 @@ export function useHrPayslipList(query?: Record<string, any>) {
   return {
     data: data?.data.data,
     ...param
-  };  
+  };
 }
 
 export function useHrPayslipDetail(id: string, query?: Record<string, string>) {
