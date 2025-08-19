@@ -46,11 +46,11 @@ const LeaveCreationForm = () => {
     });
     back();
   });
-  const handleSubmit = async (values: Partial<THrLeave>) => {
+  const handleSubmit = async (values: THrLeave) => {
     doHrLeaveCreate(values);
   };
 
-  const form = useForm();
+  const form = useForm<THrLeave>();
   const {
     control,
     handleSubmit: submitForm,
@@ -65,8 +65,8 @@ const LeaveCreationForm = () => {
   const end = watch("request_date_to");
   const isHalfDay = watch("request_unit_half");
   const isCustomHours = watch("request_unit_hours");
-  const hourFrom = watch("request_hour_from");
-  const hourTo = watch("request_hour_to");
+  const hourFrom = watch("request_hour_from")?.toString();
+  const hourTo = watch("request_hour_to")?.toString();
 
   const [haveLeave, setHaveLeave] = useState(false);
   const [events, setEvents] = useState<

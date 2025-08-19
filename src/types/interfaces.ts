@@ -38,14 +38,20 @@ export interface IInputDate<T extends FieldValues = FieldValues>
   date?: Date;
 }
 export interface IInputSelect<T extends FieldValues = FieldValues>
-  extends IInput,
-    IControlledInput {
+  extends IInput {
+  control?: Control<T>;
+  name: Path<T>;
+  rules?: ControllerProps<T>["rules"];
+  defaultValue?: any;
   selections?: { id: any; name: string; value: string }[];
-  string?:boolean
+  string?: boolean;
 }
-export interface ICheckbox<T extends FieldValues = FieldValues>
-  extends IInput,
-    IControlledInput {}
+export interface ICheckbox<T extends FieldValues = FieldValues> extends IInput {
+  control?: Control<T>;
+  name: Path<T>;
+  rules?: ControllerProps<T>["rules"];
+  defaultValue?: any;
+}
 
 export interface IEncryptedPassword {
   isVisible: boolean;
