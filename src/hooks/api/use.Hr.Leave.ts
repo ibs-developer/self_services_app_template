@@ -87,19 +87,14 @@ export function useDeleteHrLeave(onSuccess: () => void) {
 }
 
 export function useHrLeaveTypes(query?) {
-  const { data, refetch, isLoading, isError, error } = useQuery({
+  const { data, ...param } = useQuery({
     queryFn: () => apiLeaveTypes(query),
-    queryKey: ["hrLeaveTypes"],
+    queryKey: ["hrLeaveTypes", query],
   });
 
-  if (isError) {
-    console.error("Error fetching leave types:", error);
-    if (error && typeof error === "object") {
-      Object.entries(error).forEach(([key, value]) => {
-        console.error(`error.${key}:`, value);
-      });
-    }
+  if (param.isError) {
+    onError(param.error);
   }
 
-  return { data: data?.data.data, refetch, isLoading, isError };
+  return { data: data?.data.data, ...param };
 }

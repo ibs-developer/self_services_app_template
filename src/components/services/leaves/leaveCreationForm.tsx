@@ -25,8 +25,8 @@ const LeaveCreationForm = () => {
   const { back } = useRouter();
   const queryClient = useQueryClient();
   const { user } = useLoginStore();
-  const { data: timeOffTypes = [], isLoading } = useHrLeaveTypes({
-    domain: `["|",["requires_allocation", "=", "no"],"&",["has_valid_allocation", "=", True],"|",["allows_negative", "=", True],"&",["virtual_remaining_leaves", ">", 0],["allows_negative", "=", False]]`,
+  const { data: timeOffTypes, isLoading } = useHrLeaveTypes({
+    domain: `["|", ["requires_allocation", "=", "no"], "&", ["has_valid_allocation", "=", True],"&", ["virtual_remaining_leaves", ">", 0],["max_leaves", ">", "0"] ]`,
   });
   const { data: leaves } = useHrLeaveList({
     domain: `[["employee_id", "=",${user?.id}]]`,
@@ -179,7 +179,7 @@ const LeaveCreationForm = () => {
         control={control}
         name="holiday_status_id"
         label="Leave Type"
-        selections={timeOffTypes.map((type) => ({
+        selections={timeOffTypes?.map((type) => ({
           id: type.id,
           name: type.name,
           value: type.id.toString(),
