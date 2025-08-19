@@ -13,6 +13,7 @@ import moment from "moment";
 import React, { FC, ReactNode, useEffect } from "react";
 import { FlatList, Text, View } from "react-native";
 import Square from "./square";
+import { format } from "date-fns";
 
 const TodayAttendance: FC<ITodayAttendance> = ({
   checkIn,
@@ -52,7 +53,7 @@ const TodayAttendance: FC<ITodayAttendance> = ({
       icon: <IconLogin2 {...iconProps} />,
       title: "Check In",
       time: pastAttendance?.[0]?.check_in
-        ? moment(new Date(pastAttendance[0].check_in)).format("hh:mm a")
+        ? format(new Date(pastAttendance[0].check_in + 'Z'), 'hh:mm a')
         : "--:--",
       text: "On Time",
     },
@@ -61,7 +62,7 @@ const TodayAttendance: FC<ITodayAttendance> = ({
       icon: <IconLogout {...iconProps} />,
       title: "Check Out",
       time: pastAttendance?.[0]?.check_out
-        ? moment(new Date(pastAttendance[0].check_out)).format("hh:mm a")
+        ? format(new Date(pastAttendance[0].check_out + 'Z'), 'hh:mm a')
         : "--:--",
       text: "Go Home",
     },

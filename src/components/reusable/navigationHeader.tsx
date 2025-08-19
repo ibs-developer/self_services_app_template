@@ -17,7 +17,7 @@ const NavigationHeader: FC<INavigationHeader> = ({
   return (
     <View className="flex-row items-center justify-center p-4 relative">
       <View className="absolute left-4">
-        <IconChevronLeft onPress={handleBack} />
+        <IconChevronLeft size={25} onPress={handleBack} />
       </View>
       <View>
         <Text className="text-lg font-bold">{title}</Text>

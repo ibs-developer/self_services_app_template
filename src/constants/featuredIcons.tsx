@@ -17,11 +17,11 @@ const iconSize = 35;
 export const featuredIcons: IconItem[] = [
   {
     id: 1,
-    label: "Time Off",
+    label: "Leaves",
     icon: (
       <IconCalendarOff size={iconSize} className="bg-red-500" color="#ef4444" />
     ),
-    route: "/(tabs)/services/time-off",
+    route: "/(tabs)/services/leaves",
     className: "border-red-500 bg-red-100",
     textClassName: "text-red-500",
   },

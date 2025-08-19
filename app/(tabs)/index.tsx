@@ -11,14 +11,16 @@ import { useEmployeeDetails } from "@/hooks/api/use.Hr.Employee";
 import { useLoginStore } from "@/hooks/loginStore";
 import { TDay } from "@/types/interfaces";
 import { returnDate } from "@/utils/helpFunctions";
+import { formatInTimeZone } from "date-fns-tz";
 import * as Location from "expo-location";
 import { getDistance } from "geolib";
-import moment from "moment";
 import React, { useEffect, useState } from "react";
 import {
+  Alert,
   Animated,
   NativeScrollEvent,
   NativeSyntheticEvent,
+  Platform,
   ScrollView,
   Text,
   useAnimatedValue,
@@ -66,7 +68,7 @@ const Home = () => {
       return false;
     }
 
-    const now = moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
+    const now = formatInTimeZone(new Date(), "UTC", "yyyy-MM-dd HH:mm:ss");
     try {
       doHrAttendanceCreate({ check_in: now });
       return true;
@@ -80,7 +82,7 @@ const Home = () => {
       return false;
     }
 
-    const now = moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
+    const now = formatInTimeZone(new Date(), "UTC", "yyyy-MM-dd HH:mm:ss");
     try {
       if (!activeAttendance?.[0]) {
         Toast.show({ type: "error", text1: "You are not checked in!" });
@@ -156,6 +158,13 @@ const Home = () => {
     }
   }, [employee]);
 
+  // useEffect(() => {
+  //   if (Platform.OS === "ios") {
+  //     Alert.alert("Now The App is running on iOS");
+  //   } else {
+  //     Alert.alert("Now The App is running on Android");
+  //   }
+  // }, []);
   if (isLoading)
     return (
       <View className="flex-1 items-center justify-center">

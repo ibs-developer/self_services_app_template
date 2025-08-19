@@ -1,4 +1,4 @@
-export type OdooIdNameTuple = [number, string];
+export type OdooIdNameTuple = [number, string] | number;
 export type OdooFalseOr<T> = T | false;
 
 export type TloginForm = {

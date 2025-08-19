@@ -4,6 +4,7 @@ import { OdooIdNameTuple, OdooFalseOr } from '../global';
  * User's private address information
  */
 export type TUserPrivateAddress = {
+  // Existing address fields
   private_street: OdooFalseOr<string>;
   private_street2: OdooFalseOr<string>;
   private_city: OdooFalseOr<string>;
@@ -11,7 +12,12 @@ export type TUserPrivateAddress = {
   private_zip: OdooFalseOr<string>;
   private_country_id: OdooFalseOr<OdooIdNameTuple>;
   private_phone: OdooFalseOr<string>;
-  private_email: string;
+  private_email: OdooFalseOr<string>;
+
+  // New fields from API
+  address_home_id: OdooFalseOr<OdooIdNameTuple>;
+  is_address_home_a_company: boolean;
+  phone: OdooFalseOr<string>;
 };
 
 /**
@@ -19,7 +25,7 @@ export type TUserPrivateAddress = {
  */
 export type TUserPersonal = {
   gender: OdooFalseOr<string>;
-  marital: string;
+  marital: string; // Keep as string - enum values may change from backend
   spouse_complete_name: OdooFalseOr<string>;
   spouse_birthdate: OdooFalseOr<string>;
   children: number;
@@ -37,7 +43,7 @@ export type TUserPersonal = {
   work_permit_expiration_date: OdooFalseOr<string>;
   has_work_permit: boolean;
   work_permit_scheduled_activity: boolean;
-  work_permit_name: string;
+  work_permit_name: OdooFalseOr<string>;
   additional_note: OdooFalseOr<string>;
   emergency_contact: OdooFalseOr<string>;
   emergency_phone: OdooFalseOr<string>;

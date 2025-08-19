@@ -3,6 +3,9 @@
 # dependencies
 node_modules/
 
+# android folder
+android/
+
 # Lock files (keep only package-lock.json)
 pnpm-lock.yaml
 yarn.lock
@@ -42,3 +45,7 @@ app-example
 # local environment variables
 .env
 /env.d.ts
+
+# vscode
+.vscode/
+*.code-workspace
