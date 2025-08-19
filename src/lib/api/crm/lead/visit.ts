@@ -1,5 +1,4 @@
 import ENDPOINTS from '@/constants/ENDPOINTS';
-import { OdooResponse, TVisit } from '@/types/index';
 import api from '../../axiosConfig';
 
 export function apiVisitList(query?: any) {
@@ -16,7 +15,7 @@ export function apiVisitDetail(
     id: string,
     query?: Record<string, string>,
 ) {
-    return api<OdooResponse<TVisit>>({
+    return api({
         method: 'GET',
         url: ENDPOINTS.crm.lead.visit.show(id),
         params: {
@@ -26,7 +25,7 @@ export function apiVisitDetail(
 }
 
 export function apiCreateVisit(
-    payload: Partial<TVisit>,
+    payload: any,
     userId: string,
 ) {
     return api({
@@ -41,7 +40,7 @@ export function apiCreateVisit(
 
 export function apiUpdateVisit(
     id: string,
-    payload: Partial<TVisit>,
+    payload: any
 ) {
     return api({
         method: 'PUT',
