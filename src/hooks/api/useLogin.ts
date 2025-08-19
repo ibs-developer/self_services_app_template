@@ -44,7 +44,7 @@ export function useLogin() {
           console.log("not your device", error.response.data.error.message)
         router.push('/login/device_mismatch');
       }
-      // onError(error);
+      onError(error);
       // Optionally, you can handle specific error cases here
       // For example, if you want to redirect to a specific error page:
       // if (error.message.includes('device mismatch')) {
@@ -52,7 +52,7 @@ export function useLogin() {
       // }
     },
     onSuccess: () => {
-      router.push('/(tabs)/home');
+      router.push('/(tabs)');
       Toast.show({
         type: 'success',
         text1: 'Login successful',

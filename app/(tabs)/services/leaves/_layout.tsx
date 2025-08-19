@@ -1,7 +1,6 @@
 import { Stack } from "expo-router";
-import React from "react";
 
-const HomeLayout = () => {
+export default function TimeOffLayout() {
   return (
     <Stack
       screenOptions={{
@@ -9,8 +8,7 @@ const HomeLayout = () => {
       }}
     >
       <Stack.Screen name="index" />
+      <Stack.Screen name="new_leave" />
     </Stack>
   );
-};
-
-export default HomeLayout;
+}

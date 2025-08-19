@@ -1,10 +1,11 @@
 import Button from "@/components/reusable/button";
-import Input from "@/components/reusable/input";
+import { ControlledInput } from "@/components/reusable/input";
 import { useLogin } from "@/hooks/api/useLogin";
 import { loginForm } from "@/types/schemas";
+import getDeviceId from "@/utils/GetDeviceInfo";
 import { Link } from "expo-router";
 import React from "react";
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import {
   Image,
   Keyboard,
@@ -25,12 +26,13 @@ const Login = () => {
     control,
     handleSubmit,
     formState: { errors },
-    watch
+    watch,
   } = form;
 
   const onSubmit = async (data: loginForm) => {
     try {
-      const device_id = "470c3722f1ae7288";
+      const device_id = await getDeviceId();
+      // "470c3722f1ae7288";
       if (!device_id) {
         Toast.show({
           type: "error",
@@ -87,48 +89,34 @@ const Login = () => {
           {/* form */}
           <View className="gap-6">
             {/* email */}
-            <Controller
+            <ControlledInput
               control={control}
+              rules={{
+                required: "Email is required",
+              }}
               name="email"
-              rules={{ required: "Email is required" }}
-              render={({
-                field: { onChange, value },
-                fieldState: { error },
-              }) => (
-                <Input
-                  label="Email"
-                  placeholder="Enter your email"
-                  value={value}
-                  onChangeText={onChange}
-                  error={error?.message}
-                  autoCapitalize="none"
-                  keyboardType="email-address"
-                  className="border-primary"
-                  labelClassName="text-primary"
-                />
-              )}
+              label="Email"
+              placeholder="Enter your email"
+              autoCapitalize="none"
+              keyboardType="email-address"
+              className="border-primary"
+              labelClassName="text-primary"
             />
+
             {/* password */}
-            <Controller
+            <ControlledInput
               control={control}
+              rules={{
+                required: "Password is required",
+              }}
               name="password"
-              rules={{ required: "Password is required" }}
-              render={({
-                field: { onChange, value },
-                fieldState: { error },
-              }) => (
-                <Input
-                  label="Password"
-                  placeholder="Enter your password"
-                  value={value}
-                  onChangeText={onChange}
-                  error={error?.message}
-                  secureTextEntry
-                  className="border-primary"
-                  labelClassName="text-primary"
-                />
-              )}
+              label="Password"
+              placeholder="Enter your password"
+              secureTextEntry
+              className="border-primary"
+              labelClassName="text-primary"
             />
+
             <Link
               href={"/login/forgot_password"}
               className="text-blue-400 font-[600] self-end py-3 text-"

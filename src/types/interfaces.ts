@@ -1,12 +1,58 @@
 import { Href } from "expo-router";
 import { ReactNode } from "react";
+import { Control, ControllerProps, FieldValues, Path } from "react-hook-form";
 import { ImageProps, PressableProps, TextInputProps } from "react-native";
+import { THrPayslip } from "./hr";
+import { THrAttendance } from "./hr/hr.attendance";
+import { THrLeave } from "./hr/hr.leave";
+import { THrLoan } from "./hr/hr.loan";
 
-export interface IInput extends TextInputProps {
+export interface IInput extends Omit<TextInputProps, "defaultValue"> {
   labelClassName?: string;
   label?: string;
   error?: string;
+  icon?: ReactNode;
 }
+
+export interface IControlledInput<T extends FieldValues = FieldValues>
+  extends IInput {
+  control?: Control<T>;
+  name: Path<T>;
+  rules?: ControllerProps<T>["rules"];
+  defaultValue?: any;
+}
+export interface ITextArea<T extends FieldValues = FieldValues> extends IInput {
+  control?: Control<T>;
+  name: Path<T>;
+  rules?: ControllerProps<T>["rules"];
+  defaultValue?: any;
+}
+
+export interface IInputDate<T extends FieldValues = FieldValues>
+  extends IInput {
+  control?: Control<T>;
+  name: Path<T>;
+  rules?: ControllerProps<T>["rules"];
+  defaultValue?: any;
+  icon?: ReactNode;
+  date?: Date;
+}
+export interface IInputSelect<T extends FieldValues = FieldValues>
+  extends IInput {
+  control?: Control<T>;
+  name: Path<T>;
+  rules?: ControllerProps<T>["rules"];
+  defaultValue?: any;
+  selections?: { id: any; name: string; value: string }[];
+  string?: boolean;
+}
+export interface ICheckbox<T extends FieldValues = FieldValues> extends IInput {
+  control?: Control<T>;
+  name: Path<T>;
+  rules?: ControllerProps<T>["rules"];
+  defaultValue?: any;
+}
+
 export interface IEncryptedPassword {
   isVisible: boolean;
   toggleVisibility: () => void;
@@ -54,4 +100,61 @@ export interface IconItem {
   route: Href;
   className?: string;
   textClassName?: string;
+}
+export interface IAttendanceCard {
+  attendance: THrAttendance;
+}
+export interface ILoanCard extends PressableProps {
+  loan: THrLoan;
+}
+export interface IFilterButton {
+  active?: boolean;
+  onPress: () => void;
+  title: string;
+  className?: string;
+}
+export interface IFiltersProps {
+  activeFilter: string;
+  onFilterChange: (filter: string) => void;
+  filters: { key: string; label: string }[];
+  className?: string;
+}
+export interface IStateCard extends PressableProps {
+  className?: string;
+  textClassName?: string;
+  name?: string;
+  count?: number;
+}
+export interface IBadge {
+  className?: string;
+  textClassName?: string;
+  name?: string;
+}
+export interface IPart {
+  title: string;
+  value: string | number;
+}
+export interface ILeaveCard extends PressableProps {
+  leave: THrLeave;
+}
+export interface ILeaveStates {
+  leaves: THrLeave[];
+  employee?: {
+    allocation_remaining_display?: string;
+  };
+}
+export interface IDetaleField {
+  title: string;
+  value?: string | number;
+  badge?: {
+    name: string;
+    state: string;
+  };
+  className?: string;
+  valueClassName?: string;
+  badgeClassName?: string;
+  section?: "leave" | "loan";
+}
+export interface IPayslipCard extends PressableProps {
+  payslip: THrPayslip;
 }
