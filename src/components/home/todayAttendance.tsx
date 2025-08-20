@@ -1,6 +1,6 @@
 import { colors } from "@/constants/colors";
-import { useHrAttendanceList } from "@/hooks/api/use.Hr.attendance";
-import { useEmployeeDetails } from "@/hooks/api/use.Hr.Employee";
+import { useHrAttendanceList } from "@/hooks/api/hr/use.Hr.attendance";
+import { useEmployeeDetails } from "@/hooks/api/hr/use.Hr.Employee";
 import { useLoginStore } from "@/hooks/loginStore";
 import { ITodayAttendance } from "@/types/interfaces";
 import { returnDate } from "@/utils/helpFunctions";
@@ -15,7 +15,6 @@ import React, { FC, ReactNode, useEffect } from "react";
 import { FlatList, Text, View } from "react-native";
 import Square from "./square";
 const { primary } = colors;
-
 const TodayAttendance: FC<ITodayAttendance> = ({
   checkIn,
   attendanceDay,

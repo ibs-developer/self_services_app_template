@@ -2,7 +2,7 @@ import { useRouter } from "expo-router";
 import { Image, Pressable, Text, View } from "react-native";
 
 // import { Briefcase, ChevronRight, LogOut, User } from "lucide-react-native";
-import { useEmployeeDetails } from "@/hooks/api/use.Hr.Employee";
+import { useEmployeeDetails } from "@/hooks/api/hr/use.Hr.Employee";
 import { useLogout } from "@/hooks/api/useLogin";
 import { FC, ReactNode } from "react";
 // import { useColorScheme } from "~/lib/useColorScheme";

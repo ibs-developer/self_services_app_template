@@ -7,8 +7,8 @@ import {
 } from '@/lib/api/hr/hr.loan';
 import { THrLoanCreate, THrLoanUpdate } from '@/types/hr/hr.loan';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { useLoginStore } from '../loginStore';
-import onError from './error';
+import { useLoginStore } from '../../loginStore';
+import onError from '../error';
 
 export function useHrLoanList(query?: Record<string, any>) {
   const {

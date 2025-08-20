@@ -11,7 +11,7 @@ import {
   useCreateHrLeave,
   useHrLeaveList,
   useHrLeaveTypes,
-} from "@/hooks/api/use.Hr.Leave";
+} from "@/hooks/api/hr/use.Hr.Leave";
 import { useLoginStore } from "@/hooks/loginStore";
 import { THrLeave } from "@/types";
 import { mapHrLeaveToCalendarEvent } from "@/utils/calendarUtils";

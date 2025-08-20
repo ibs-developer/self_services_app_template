@@ -6,8 +6,8 @@ import {
   useCreateHrAttendance,
   useHrAttendanceList,
   useUpdateHrAttendance,
-} from "@/hooks/api/use.Hr.attendance";
-import { useEmployeeDetails } from "@/hooks/api/use.Hr.Employee";
+} from "@/hooks/api/hr/use.Hr.attendance";
+import { useEmployeeDetails } from "@/hooks/api/hr/use.Hr.Employee";
 import { useLoginStore } from "@/hooks/loginStore";
 import { TDay } from "@/types/interfaces";
 import { returnDate } from "@/utils/helpFunctions";
@@ -16,15 +16,13 @@ import * as Location from "expo-location";
 import { getDistance } from "geolib";
 import React, { useEffect, useState } from "react";
 import {
-  Alert,
   Animated,
   NativeScrollEvent,
   NativeSyntheticEvent,
-  Platform,
   ScrollView,
   Text,
   useAnimatedValue,
-  View,
+  View
 } from "react-native";
 import Toast from "react-native-toast-message";
 

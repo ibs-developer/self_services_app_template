@@ -1,4 +1,4 @@
-import ENDPOINTS, { odoo,db,email,password } from "@/constants/ENDPOINTS";
+import ENDPOINTS, { db, email, odoo, password } from "@/constants/ENDPOINTS";
 import {
   TForgetPasswordForm,
   TloginForm,

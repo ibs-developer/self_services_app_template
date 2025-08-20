@@ -1,11 +1,11 @@
 import { apiAttendanceDetail, apiAttendanceList, apiCreateAttendance, apiUpdateAttendance } from '@/lib/api/hr/hr.attendance';
 import { THrAttendance } from '@/types/index';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { useLoginStore } from '../loginStore';
-import onError from './error';
+import { useLoginStore } from '../../loginStore';
+import onError from '../error';
 
-export function useHrAttendanceList(query?) {
-  const { data, refetch, isFetched, isSuccess, error, isLoading, isRefetching } = useQuery({
+export function useHrAttendanceList(query?: any) {
+  const { data, ...params } = useQuery({
     queryFn: () => apiAttendanceList(query),
     queryKey: ['attendance', query],
   });
@@ -21,16 +21,16 @@ export function useHrAttendanceList(query?) {
 
   // console.log('useHrAttendanceList', data);
 
-  return { data: data?.data.data, refetch, isFetched, isSuccess, isLoading, isRefetching };
+  return { data: data?.data.data, ...params };
 }
 
-export function useHrAttendanceDetail(id: string, query?) {
-  const { data, refetch, isFetched } = useQuery({
+export function useHrAttendanceDetail(id: string, query?: any) {
+  const { data, ...params } = useQuery({
     queryFn: () => apiAttendanceDetail(id, query),
     queryKey: ['attendance', id],
   });
 
-  return { data: data?.data.data, refetch, isFetched };
+  return { data: data?.data.data, ...params };
 }
 
 export function useCreateHrAttendance(onSuccess: () => void) {

@@ -9,15 +9,15 @@ import {
   View,
 } from "react-native";
 
+import NavigationHeader from "@/components/reusable/navigationHeader";
 import {
   useEmployeeDetails,
   useUpdateEmployeeProfile,
-} from "@/hooks/api/use.Hr.Employee";
-import { Field } from "./personal-info";
-import NavigationHeader from "@/components/reusable/navigationHeader";
+} from "@/hooks/api/hr/use.Hr.Employee";
 import { checkValue } from "@/utils/helpFunctions";
 import { FC, useState } from "react";
 import Toast from "react-native-toast-message";
+import { Field } from "./personal-info";
 
 interface IWork {
   edit?: boolean;

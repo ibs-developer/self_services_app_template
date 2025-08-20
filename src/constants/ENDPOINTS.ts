@@ -39,7 +39,14 @@ const ENDPOINTS = {
       // create: '/api/v1/resources/hr.payslip',
       // update: (id: string) => `/api/v1/resources/hr.payslip/${id}`,
       // delete: (id: string) => `/api/v1/resources/hr.payslip/${id}`,
-    },
+    }
+  },
+  expense: {
+    list: '/api/v1/resources/expense.expense',
+    show: (id: string) => `/api/v1/resources/expense.expense/${id}`,
+    create: '/api/v1/resources/expense.expense',
+    update: (id: string) => `/api/v1/resources/expense.expense/${id}`,
+    delete: (id: string) => `/api/v1/resources/expense.expense/${id}`,
   },
   crm: {
     lead: {

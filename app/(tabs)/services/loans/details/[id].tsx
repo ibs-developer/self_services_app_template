@@ -1,7 +1,7 @@
 import Button from "@/components/reusable/button";
 import DetaileField from "@/components/reusable/deatileField";
 import NavigationHeader from "@/components/reusable/navigationHeader";
-import { useHrLoanDetail, useUpdateHrLoan } from "@/hooks/api/use.Hr.loan";
+import { useHrLoanDetail, useUpdateHrLoan } from "@/hooks/api/hr/use.Hr.loan";
 import { THrLoan } from "@/types";
 import { getLoanStatusLabel } from "@/utils/loanStatus";
 import { useLocalSearchParams, useRouter } from "expo-router";

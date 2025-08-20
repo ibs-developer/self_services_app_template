@@ -9,8 +9,8 @@ import {
 import { THrLeave } from "@/types/hr/hr.leave";
 import { useMutation, useQuery } from "@tanstack/react-query";
 
-import { useLoginStore } from "../loginStore";
-import onError from "./error";
+import { useLoginStore } from "../../loginStore";
+import onError from "../error";
 
 export function useHrLeaveList(query?) {
   const { data, refetch, isLoading } = useQuery({

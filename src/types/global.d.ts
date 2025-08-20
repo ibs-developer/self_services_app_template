@@ -74,6 +74,13 @@ export type TMailThread = {
   message_main_attachment_id: OdooFalseOr<number>;
 };
 
+export type TAnalyticMixin = {
+  analytic_distribution: OdooFalseOr<any>;
+  analytic_distribution_search: OdooFalseOr<any>;
+  analytic_precision: number;
+
+};
+
 export type TDatabaseAuditDetails = {
   create_uid: [number, string];
   create_date: string; // Could use Date type if you'll parse it
