@@ -14,6 +14,8 @@ export * from './account/index';
 
 export * from './expense/index';
 
+export * from './crm/index';
+
 // Other domain types
 export * from './ir/index';
 export * from './project/index';

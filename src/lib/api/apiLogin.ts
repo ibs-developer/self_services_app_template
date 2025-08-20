@@ -1,4 +1,4 @@
-import ENDPOINTS, { odoo,db,email,password } from "@/constants/ENDPOINTS";
+import ENDPOINTS, { db, email, odoo, password } from "@/constants/ENDPOINTS";
 import {
   TForgetPasswordForm,
   TloginForm,
@@ -34,7 +34,7 @@ export function apiEmployeeLogin(
     data: {
       email: payload.email,
       password: payload.password,
-      // device_id: payload.device_id,
+      device_id: payload.device_id,
     },
     // params: {
     //   domain: `[["mobile_email", "=", "${payload.email}"], ["mobile_password", "=", "${payload.password}"]]`,
