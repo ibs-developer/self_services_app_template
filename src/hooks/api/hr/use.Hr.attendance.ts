@@ -1,8 +1,8 @@
 import { apiAttendanceDetail, apiAttendanceList, apiCreateAttendance, apiUpdateAttendance } from '@/lib/api/hr/hr.attendance';
 import { THrAttendance } from '@/types/index';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { useLoginStore } from '../loginStore';
-import onError from './error';
+import { useLoginStore } from '../../loginStore';
+import onError from '../error';
 
 export function useHrAttendanceList(query?) {
   const { data, refetch, isFetched, isSuccess, error, isLoading, isRefetching } = useQuery({

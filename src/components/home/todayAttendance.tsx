@@ -1,5 +1,5 @@
-import { useHrAttendanceList } from "@/hooks/api/use.Hr.attendance";
-import { useEmployeeDetails } from "@/hooks/api/use.Hr.Employee";
+import { useHrAttendanceList } from "@/hooks/api/hr/use.Hr.attendance";
+import { useEmployeeDetails } from "@/hooks/api/hr/use.Hr.Employee";
 import { useLoginStore } from "@/hooks/loginStore";
 import { ITodayAttendance } from "@/types/interfaces";
 import { returnDate } from "@/utils/helpFunctions";
@@ -9,11 +9,10 @@ import {
   IconLogin2,
   IconLogout,
 } from "@tabler/icons-react-native";
-import moment from "moment";
+import { format } from "date-fns";
 import React, { FC, ReactNode, useEffect } from "react";
 import { FlatList, Text, View } from "react-native";
 import Square from "./square";
-import { format } from "date-fns";
 
 const TodayAttendance: FC<ITodayAttendance> = ({
   checkIn,

@@ -2,7 +2,7 @@ import FilterKeys from "@/components/reusable/filterKeys";
 import NavigationHeader from "@/components/reusable/navigationHeader";
 import StateCard from "@/components/reusable/stateCard";
 import LoanCard from "@/components/services/loans/loanCard";
-import { useHrLoanList } from "@/hooks/api/use.Hr.loan";
+import { useHrLoanList } from "@/hooks/api/hr/use.Hr.loan";
 import { useLoginStore } from "@/hooks/loginStore";
 import { IconPlus } from "@tabler/icons-react-native";
 import { useFocusEffect, useRouter } from "expo-router";

@@ -1,6 +1,6 @@
 import NavigationHeader from "@/components/reusable/navigationHeader";
 import AttendanceCard from "@/components/services/attendance/attendanceCard";
-import { useHrAttendanceList } from "@/hooks/api/use.Hr.attendance";
+import { useHrAttendanceList } from "@/hooks/api/hr/use.Hr.attendance";
 import { useLoginStore } from "@/hooks/loginStore";
 import React from "react";
 import { Text, View } from "react-native";

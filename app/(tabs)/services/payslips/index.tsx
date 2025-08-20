@@ -2,7 +2,7 @@ import FilterKeys from "@/components/reusable/filterKeys";
 import NavigateHeder from "@/components/reusable/navigationHeader";
 import StateCard from "@/components/reusable/stateCard";
 import PayslipCard from "@/components/services/payslips/payslipCard";
-import { useHrPayslipList } from "@/hooks/api/use.Hr.Payslip";
+import { useHrPayslipList } from "@/hooks/api/hr/use.Hr.Payslip";
 import { useLoginStore } from "@/hooks/loginStore";
 import { THrPayslip } from "@/types";
 import React, { useState } from "react";

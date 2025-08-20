@@ -1,6 +1,6 @@
 import DetaileField from "@/components/reusable/deatileField";
 import NavigationHeader from "@/components/reusable/navigationHeader";
-import { useHrLeaveDetail } from "@/hooks/api/use.Hr.Leave";
+import { useHrLeaveDetail } from "@/hooks/api/hr/use.Hr.Leave";
 import { THrLeave } from "@/types";
 import {
   formatDate,

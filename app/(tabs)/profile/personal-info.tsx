@@ -14,12 +14,12 @@ import {
 } from 'react-native';
 import Toast from 'react-native-toast-message';
 
+import NavigationHeader from '@/components/reusable/navigationHeader';
 import {
   useEmployeeDetails,
   useUpdateEmployeeProfile,
-} from '@/hooks/api/use.Hr.Employee';
+} from '@/hooks/api/hr/use.Hr.Employee';
 import { checkValue, isValidEgyptianPhone } from '@/utils/helpFunctions';
-import NavigationHeader from '@/components/reusable/navigationHeader';
 
 interface IField {
   label: string;

@@ -1,4 +1,4 @@
-import { useEmployeeDetails } from "@/hooks/api/use.Hr.Employee";
+import { useEmployeeDetails } from "@/hooks/api/hr/use.Hr.Employee";
 import { getEmployeeImage } from "@/utils/getEmployeeImage";
 import { IconBell } from "@tabler/icons-react-native";
 import React from "react";
