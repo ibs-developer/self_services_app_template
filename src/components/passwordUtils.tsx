@@ -66,7 +66,7 @@ export const Container = () => {
 
 export const Button: FC<IButton> = ({ onPress, text }) => {
   return (
-    <Pressable onPress={onPress} className="p-6 bg-blue-400 my-6 rounded-xl">
+    <Pressable onPress={onPress} className="p-6 bg-primary my-6 rounded-xl">
       <Text className="text-center font-[600] text-white">{text}</Text>
     </Pressable>
   );
@@ -86,8 +86,8 @@ export const Input: FC<IInput> = ({
 
   return (
     <>
-      <View className="border border-blue-400 rounded-xl p-2 px-4">
-        <Text className="text-blue-400 font-[600]">{label}</Text>
+      <View className="border border-primary rounded-xl p-2 px-4">
+        <Text className="text-primary font-[600]">{label}</Text>
         <View className="flex-row items-center">
           <TextInput
             editable={disable ? false : true}

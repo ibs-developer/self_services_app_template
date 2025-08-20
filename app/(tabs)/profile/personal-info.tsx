@@ -170,7 +170,7 @@ const PersonalInfoScreen: FC<IPersonal> = ({ edit }) => {
                       private_street,
                     })
                   }
-                  className={` ${disableBtn ? 'bg-blue-200' : 'bg-blue-400'} mt-4 p-5 rounded-xl`}
+                  className={` ${disableBtn ? 'bg-blue-200' : 'bg-primary'} mt-4 p-5 rounded-xl`}
                 >
                   <Text className="text-center font-bold text-white">
                     {isPending ? 'Loading . . .' : 'Done'}

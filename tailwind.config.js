@@ -14,8 +14,6 @@ module.exports = {
         secondary: "#bfdbfe",
         tertiary: "#eff6ff",
         backGround: "#F2F2F2",
-        textColor: "var(--textColor)",
-        borderColor: "var(--borderColor)",
       },
     },
   },

@@ -13,7 +13,7 @@ import { Pressable, Text, View } from "react-native";
 
 const LoanCard: FC<ILoanCard> = ({ loan }) => {
   const { push } = useRouter();
-  const currency = loan?.currency_id[1];
+  const currency = Array.isArray(loan?.currency_id) && loan?.currency_id[1];
   return (
     <Pressable
       onPress={() => push(`/(tabs)/services/loans/details/${loan.id}`)}

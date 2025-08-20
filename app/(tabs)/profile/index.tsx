@@ -54,7 +54,7 @@ export default function ProfileScreen() {
             // }
           )
         }
-        className="bg-blue-400 p-5 rounded-xl"
+        className="bg-primary p-5 rounded-xl"
       >
         <Text className="text-white text-center font-[600]">Edit Profile</Text>
       </Pressable>

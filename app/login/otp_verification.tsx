@@ -25,6 +25,9 @@ import {
   TouchableWithoutFeedback,
   View,
 } from "react-native";
+
+import { colors } from "@/constants/colors";
+const { primary } = colors;
 interface IResend {
   setResend: Dispatch<SetStateAction<boolean>>;
   resend: boolean;
@@ -85,13 +88,14 @@ const Resend: FC<IResend> = ({ setResend, resend }) => {
       <Pressable disabled={!resend} onPress={() => setResend(false)}>
         <Text
           style={{
-            color: resend ? "#60a5fa" : "#bfdbfe",
+            color: resend ? primary : "#bfdbfe",
           }}
           className={`font-[600]`}
         >
           Resend it
         </Text>
       </Pressable>
+      {/* <Button/> */}
     </View>
   );
 };

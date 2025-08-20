@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
-import { View, Pressable, ActivityIndicator, Text } from 'react-native';
-import * as DocumentPicker from 'expo-document-picker';
-import * as FileSystem from 'expo-file-system';
-import { useUploadAttachment } from '@/hooks/api/use.Ir.Attachment';
-import { IconX } from '@tabler/icons-react-native';
-import Button from './button';
+import { colors } from "@/constants/colors";
+import { useUploadAttachment } from "@/hooks/api/use.Ir.Attachment";
+import { IconX } from "@tabler/icons-react-native";
+import * as DocumentPicker from "expo-document-picker";
+import * as FileSystem from "expo-file-system";
+import React, { useState } from "react";
+import { ActivityIndicator, Pressable, Text, View } from "react-native";
+import Button from "./button";
+const { primary } = colors;
 
 // Shared document upload field for types that need it
 export default function DocumentUploadField({
@@ -21,11 +23,11 @@ export default function DocumentUploadField({
     try {
       const result = await DocumentPicker.getDocumentAsync({
         type: [
-          'application/pdf',
-          'application/msword',
-          'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-          'image/jpeg',
-          'image/png',
+          "application/pdf",
+          "application/msword",
+          "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+          "image/jpeg",
+          "image/png",
         ],
         multiple: false,
       });
@@ -38,11 +40,11 @@ export default function DocumentUploadField({
 
         const payload = {
           name: file.name,
-          type: 'binary',
+          type: "binary",
           datas: base64,
-          mimetype: file.mimeType || 'application/octet-stream',
+          mimetype: file.mimeType || "application/octet-stream",
           public: true,
-          res_model: 'hr.leave',
+          res_model: "hr.leave",
         };
 
         doUploadDocument(payload, {
@@ -62,7 +64,7 @@ export default function DocumentUploadField({
         });
       }
     } catch (error) {
-      console.error('Document picker error:', error);
+      console.error("Document picker error:", error);
     }
   };
 
@@ -77,7 +79,7 @@ export default function DocumentUploadField({
       <Pressable
         onPress={handleFilePick}
         style={{
-          backgroundColor: isPending ? '#bfdbfe' : '#60a5fa',
+          backgroundColor: isPending ? "#bfdbfe" : primary,
         }}
         className="p-4 rounded-xl bg-blue-200"
       >
@@ -99,10 +101,7 @@ export default function DocumentUploadField({
               <Text className="flex-1" numberOfLines={1}>
                 {doc.name}
               </Text>
-              <Button
-                
-                onPress={() => removeDocument(index)}
-              >
+              <Button onPress={() => removeDocument(index)}>
                 <IconX size={16} className="text-destructive" />
               </Button>
             </View>

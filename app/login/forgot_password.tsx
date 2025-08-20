@@ -24,13 +24,13 @@ const Selection: FC<ISelection> = ({
     <Pressable
       onPress={onPress}
       className={`
-        ${isSelected ? "border border-blue-400" : "border-[0.5px] border-gray-600"}
+        ${isSelected ? "border border-primary" : "border-[0.5px] border-gray-600"}
          rounded-xl p-4 flex-row items-center justify-between transition-all duration-200
          `}
     >
       <View className="flex-row gap-4">
         <View
-          className={` ${isSelected ? "bg-blue-400" : "bg-gray-300/50"} rounded-xl w-[45] aspect-square items-center justify-center transition-all duration-200`}
+          className={` ${isSelected ? "bg-primary" : "bg-gray-300/50"} rounded-xl w-[45] aspect-square items-center justify-center transition-all duration-200`}
         >
           {icon}
         </View>
@@ -40,10 +40,10 @@ const Selection: FC<ISelection> = ({
         </View>
       </View>
       <View
-        className={`rounded-full border-2 w-[25] h-[25] relative ${isSelected ? "border-blue-400" : "border-gray-600"} transition-all duration-200 `}
+        className={`rounded-full border-2 w-[25] h-[25] relative ${isSelected ? "border-primary" : "border-gray-600"} transition-all duration-200 `}
       >
         <View
-          className={`rounded-full w-[18] h-[18] absolute top-[1.34] left-[1.34] bg-blue-400 ${isSelected ? "scale-100" : "scale-0"} transition-all duration-200`}
+          className={`rounded-full w-[18] h-[18] absolute top-[1.34] left-[1.34] bg-primary ${isSelected ? "scale-100" : "scale-0"} transition-all duration-200`}
         />
       </View>
     </Pressable>

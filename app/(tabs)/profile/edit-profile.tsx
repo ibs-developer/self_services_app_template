@@ -13,7 +13,7 @@ interface IButton {
   return (
     <Pressable
       onPress={onPress}
-      className={`flex-1 p-5 ${active ? 'bg-blue-400 rounded-xl' : 'bg-transparent rounded-none'} transition-all duration-200`}
+      className={`flex-1 p-5 ${active ? 'bg-primary rounded-xl' : 'bg-transparent rounded-none'} transition-all duration-200`}
     >
       <Text
         className={`${active ? 'text-white' : 'text-black'} font-[600] text-center transition-all duration-200`}

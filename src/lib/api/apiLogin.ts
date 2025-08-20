@@ -34,7 +34,7 @@ export function apiEmployeeLogin(
     data: {
       email: payload.email,
       password: payload.password,
-      // device_id: payload.device_id,
+      device_id: payload.device_id,
     },
     // params: {
     //   domain: `[["mobile_email", "=", "${payload.email}"], ["mobile_password", "=", "${payload.password}"]]`,

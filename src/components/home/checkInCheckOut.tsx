@@ -1,3 +1,4 @@
+import { colors } from "@/constants/colors";
 import { IconLogin2, IconLogout } from "@tabler/icons-react-native";
 import React, { FC, useEffect } from "react";
 import { StyleSheet } from "react-native";
@@ -9,6 +10,7 @@ import Animated, {
   useSharedValue,
   withSpring,
 } from "react-native-reanimated";
+const { primary } = colors;
 
 const CONTAINER_WIDTH = 350;
 const BUTTON_WIDTH = 60;
@@ -90,7 +92,7 @@ const CheckInCheckOut: FC<ICheckInCHeckOut> = ({
     const backgroundColor = interpolateColor(
       translateX.value,
       [0, SWIPE_RANGE],
-      ["#60a5fa", "#f87171"] // Gray to Green
+      [primary, "#f87171"] // Gray to Green
     );
     return { backgroundColor };
   });
@@ -117,7 +119,7 @@ const CheckInCheckOut: FC<ICheckInCHeckOut> = ({
           {isCheckedIn ? (
             <IconLogout color="red" />
           ) : (
-            <IconLogin2 color="#60a5fa" />
+            <IconLogin2 color={primary} />
           )}
         </Animated.View>
       </GestureDetector>

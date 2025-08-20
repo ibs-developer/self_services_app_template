@@ -1,3 +1,4 @@
+import { colors } from "@/constants/colors";
 import { useLoginStore } from "@/hooks/loginStore";
 import {
   IconDeviceGamepad3,
@@ -7,6 +8,7 @@ import {
 import { Redirect, Tabs } from "expo-router";
 import React from "react";
 import { StatusBar } from "react-native";
+const { primary } = colors;
 
 export default function TabLayout() {
   // Check if user is logged in
@@ -25,7 +27,7 @@ export default function TabLayout() {
       <Tabs
         screenOptions={{
           headerShown: false,
-          tabBarActiveTintColor: "#60a5fa",
+          tabBarActiveTintColor: primary,
           tabBarInactiveTintColor: "#888",
           tabBarStyle: {
             backgroundColor: "#f8fafc",

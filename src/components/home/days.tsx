@@ -20,7 +20,7 @@ const Day: FC<IDay> = ({ dayNum, dayName, active, onPress }) => {
   return (
     <Pressable
       onPress={onPress}
-      className={`h-[70] aspect-square ${active ? "bg-blue-400" : "bg-white"} transition-all duration-200 rounded-xl items-center justify-center`}
+      className={`h-[70] aspect-square ${active ? "bg-primary" : "bg-white"} transition-all duration-200 rounded-xl items-center justify-center`}
     >
       <Text
         className={`font-bold text-xl ${active ? "text-white" : "text-black"} transition-all duration-200`}

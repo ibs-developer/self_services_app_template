@@ -31,8 +31,9 @@ const Login = () => {
 
   const onSubmit = async (data: loginForm) => {
     try {
-      const device_id = await getDeviceId();
-      // "470c3722f1ae7288";
+      const device_id = 
+      // await getDeviceId();
+      "470c3722f1ae7288";
       if (!device_id) {
         Toast.show({
           type: "error",
@@ -119,7 +120,7 @@ const Login = () => {
 
             <Link
               href={"/login/forgot_password"}
-              className="text-blue-400 font-[600] self-end py-3 text-"
+              className="text-primary font-[600] self-end py-3 text-"
             >
               Forgot Password ?
             </Link>

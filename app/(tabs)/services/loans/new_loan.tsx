@@ -1,3 +1,4 @@
+import Button from "@/components/reusable/button";
 import Input, { ControlledInput, InputDate } from "@/components/reusable/input";
 import NavigationHeader from "@/components/reusable/navigationHeader";
 import TotalInstallment from "@/components/services/loans/totalInstallment";
@@ -8,13 +9,7 @@ import { getMonthlyDates } from "@/utils/loanStatus";
 import { useRouter } from "expo-router";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import {
-  ActivityIndicator,
-  Pressable,
-  ScrollView,
-  Text,
-  View,
-} from "react-native";
+import { ScrollView, View } from "react-native";
 import Toast from "react-native-toast-message";
 
 const NewLoan = () => {
@@ -30,7 +25,7 @@ const NewLoan = () => {
     back();
   });
   const form = useForm<THrLoan>();
-  const { control, handleSubmit, setValue, watch, formState } = form;
+  const { control, handleSubmit, watch, formState } = form;
   const { isSubmitting } = formState;
   const loanDate = watch("date");
   const loanAmount = watch("loan_amount");
@@ -111,33 +106,23 @@ const NewLoan = () => {
 
         {/* buttons */}
         <View className="justify-between gap-3">
-          <Pressable
-            style={{
-              backgroundColor: "#f87171",
-            }}
-            className="p-4 rounded-xl"
+          <Button
+            title="Discard"
             onPress={back}
             disabled={isSubmitting || isPending}
-          >
-            <Text className="font-bold text-center text-white">Discard</Text>
-          </Pressable>
-          <Pressable
-            style={{
-              backgroundColor:
-                isSubmitting || isPending || fieldsRequired
-                  ? "#bfdbfe"
-                  : "#60a5fa",
-            }}
-            className="p-4 rounded-xl bg-blue-200"
+            className="bg-red-500 h-[50]"
+            disabledClassName="bg-red-200"
+            textClassName="text-white"
+          />
+          <Button
+            title="Submit"
             onPress={handleSubmit(submit)}
-            disabled={isSubmitting || isPending || fieldsRequired}
-          >
-            {isSubmitting || isPending ? (
-              <ActivityIndicator size="small" color="#fff" />
-            ) : (
-              <Text className="font-bold text-center text-white">Submit</Text>
-            )}
-          </Pressable>
+            isPressed={isSubmitting || isPending}
+            disabled={fieldsRequired}
+            className="bg-primary h-[50]"
+            disabledClassName="bg-secondary"
+            textClassName="text-white"
+          />
         </View>
       </ScrollView>
     </View>

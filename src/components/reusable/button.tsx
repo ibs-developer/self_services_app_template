@@ -9,13 +9,14 @@ const Button: FC<IButton> = ({
   isPressed,
   loaderSize = "small",
   disabledClassName,
+  disabled,
   ...props
 }) => {
   return (
     <Pressable
       {...props}
       disabled={isPressed}
-      className={`items-center justify-center rounded-xl transition-all duration-200 ${isPressed && disabledClassName} ${className}`}
+      className={`items-center justify-center rounded-xl transition-all duration-200 ${(isPressed || disabled) && disabledClassName} ${className}`}
     >
       {isPressed ? (
         <ActivityIndicator className={textClassName} size={loaderSize} />

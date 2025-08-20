@@ -8,7 +8,7 @@ const LoginLayout = () => {
       <Stack.Screen name="device_mismatch" />
       <Stack.Screen name="forgot_password" />
       <Stack.Screen name="new_password" />
-      <Stack.Screen name="otp_vrification" />
+      <Stack.Screen name="otp_verification" />
     </Stack>
   );
 };

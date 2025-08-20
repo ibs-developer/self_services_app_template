@@ -1,13 +1,15 @@
+import { colors } from "@/constants/colors";
 import { useEmployeeDetails } from "@/hooks/api/use.Hr.Employee";
 import { getEmployeeImage } from "@/utils/getEmployeeImage";
 import { IconBell } from "@tabler/icons-react-native";
 import React from "react";
 import { Text, View } from "react-native";
 import Avatar from "../reusable/avatar";
+const { primary } = colors;
 
 const UserInfo = () => {
   const { data: user } = useEmployeeDetails();
-  const iconProps = { color: "#60a5fa", size: 35, strokeWidth: 1.5 };
+  const iconProps = { color: primary, size: 35, strokeWidth: 1.5 };
 
   return (
     <View className="flex-row justify-between items-center p-5">

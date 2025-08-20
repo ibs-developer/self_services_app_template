@@ -55,6 +55,8 @@ const NewPassword = () => {
                     setNewPassword(value);
                     if (error) setError('');
                   }}
+                  className='border-primary'
+                  labelClassName='text-primary'
                   // showError={!!newPassword}
                   // error={error}
                 />
@@ -67,6 +69,8 @@ const NewPassword = () => {
                     setRe_password(value);
                     if (error) setError('');
                   }}
+                  className='border-primary'
+                  labelClassName='text-primary'
                   // showError={!!re_password}
                   // error={error}
                 />

@@ -64,6 +64,8 @@ const DeviceMismatch = () => {
                   placeholder="Enter yor nots"
                   value={message}
                   onChangeText={(value) => setMessage(value)}
+                  className="border-primary"
+                  labelClassName="text-primary"
                 />
               </View>
 
@@ -72,6 +74,8 @@ const DeviceMismatch = () => {
                   handleSend("+201090107373");
                 }}
                 title="Submit"
+                className="bg-primary h-[70]"
+                textClassName="text-white"
               />
             </View>
           </View>

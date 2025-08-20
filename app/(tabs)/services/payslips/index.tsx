@@ -6,7 +6,7 @@ import { useHrPayslipList } from "@/hooks/api/use.Hr.Payslip";
 import { useLoginStore } from "@/hooks/loginStore";
 import { THrPayslip } from "@/types";
 import React, { useState } from "react";
-import { FlatList, View } from "react-native";
+import { FlatList, Text, View } from "react-native";
 
 const Payslips = () => {
   const { user } = useLoginStore();
@@ -60,6 +60,11 @@ const Payslips = () => {
         refreshing={isRefetching}
         onRefresh={refetch}
         contentContainerClassName="gap-5 p-5"
+        ListEmptyComponent={
+          <View className="flex-1 justify-center items-center">
+            <Text>There is no payslips founded</Text>
+          </View>
+        }
         ListHeaderComponent={
           <View>
             <View className="flex-row flex-wrap gap-4">

@@ -1,3 +1,4 @@
+import { colors } from "@/constants/colors";
 import { useHrAttendanceList } from "@/hooks/api/use.Hr.attendance";
 import { useEmployeeDetails } from "@/hooks/api/use.Hr.Employee";
 import { useLoginStore } from "@/hooks/loginStore";
@@ -9,11 +10,11 @@ import {
   IconLogin2,
   IconLogout,
 } from "@tabler/icons-react-native";
-import moment from "moment";
+import { format } from "date-fns";
 import React, { FC, ReactNode, useEffect } from "react";
 import { FlatList, Text, View } from "react-native";
 import Square from "./square";
-import { format } from "date-fns";
+const { primary } = colors;
 
 const TodayAttendance: FC<ITodayAttendance> = ({
   checkIn,
@@ -39,7 +40,7 @@ const TodayAttendance: FC<ITodayAttendance> = ({
     refetchPast();
   }, [checkIn]);
 
-  const iconProps = { color: "#60a5fa", size: 35, strokeWidth: 1.5 };
+  const iconProps = { color: primary, size: 35, strokeWidth: 1.5 };
 
   const widget: {
     id: string;
@@ -53,7 +54,7 @@ const TodayAttendance: FC<ITodayAttendance> = ({
       icon: <IconLogin2 {...iconProps} />,
       title: "Check In",
       time: pastAttendance?.[0]?.check_in
-        ? format(new Date(pastAttendance[0].check_in + 'Z'), 'hh:mm a')
+        ? format(new Date(pastAttendance[0].check_in + "Z"), "hh:mm a")
         : "--:--",
       text: "On Time",
     },
@@ -62,7 +63,7 @@ const TodayAttendance: FC<ITodayAttendance> = ({
       icon: <IconLogout {...iconProps} />,
       title: "Check Out",
       time: pastAttendance?.[0]?.check_out
-        ? format(new Date(pastAttendance[0].check_out + 'Z'), 'hh:mm a')
+        ? format(new Date(pastAttendance[0].check_out + "Z"), "hh:mm a")
         : "--:--",
       text: "Go Home",
     },

@@ -29,6 +29,11 @@ const Attendance = () => {
         renderItem={({ item: attendance }) => (
           <AttendanceCard attendance={attendance} />
         )}
+        ListEmptyComponent={
+          <View className="flex-1 justify-center items-center">
+            <Text>There is no attendance recorded</Text>
+          </View>
+        }
       />
     </View>
   );

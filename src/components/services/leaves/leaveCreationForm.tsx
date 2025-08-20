@@ -1,3 +1,4 @@
+import Button from "@/components/reusable/button";
 import Checkbox from "@/components/reusable/checkbox";
 import DocumentUploadField from "@/components/reusable/documentUpload";
 import Input, {
@@ -18,7 +19,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "expo-router";
 import React, { useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
-import { ActivityIndicator, Pressable, Text, View } from "react-native";
+import { Pressable, Text, View } from "react-native";
 import Toast from "react-native-toast-message";
 
 const LeaveCreationForm = () => {
@@ -288,8 +289,8 @@ const LeaveCreationForm = () => {
 
       {/* Attachments */}
       {watchHolidayStatusId == 2 && (
-        <View className="border border-blue-400 rounded-xl mb-5 overflow-hidden px-4 py-2">
-          <Text className="pb-1 native:pb-2 text-blue-400">Attachments</Text>
+        <View className="border border-primary rounded-xl mb-5 overflow-hidden px-4 py-2">
+          <Text className="pb-1 native:pb-2 text-primary">Attachments</Text>
           <DocumentUploadField
             onChange={(ids) => setValue("supported_attachment_ids", ids)}
           />
@@ -298,31 +299,23 @@ const LeaveCreationForm = () => {
 
       {/* Submit Button */}
       <View className="justify-between gap-3">
-        <Pressable
-          style={{ backgroundColor: "#f87171" }}
-          className="p-4 rounded-xl"
+        <Button
+          title="Discard"
           onPress={handleDiscard}
           disabled={isSubmitting || isLoading}
-        >
-          <Text className="font-bold text-center text-white">Discard</Text>
-        </Pressable>
-        <Pressable
-          style={{
-            backgroundColor:
-              isSubmitting || isLoading || haveLeave ? "#bfdbfe" : "#60a5fa",
-          }}
-          className="p-4 rounded-xl bg-blue-200"
+          className="bg-red-500 h-[50]"
+          disabledClassName="bg-red-200"
+          textClassName="text-white"
+        />
+        <Button
+          title="Save & Close"
           onPress={submitForm(onFinalSubmit)}
-          disabled={isSubmitting || isLoading || haveLeave}
-        >
-          {isSubmitting || isLoading ? (
-            <ActivityIndicator size="small" color="#fff" />
-          ) : (
-            <Text className="font-bold text-center text-white">
-              Save & Close
-            </Text>
-          )}
-        </Pressable>
+          isPressed={isSubmitting || isLoading}
+          disabled={haveLeave}
+          className="bg-primary h-[50]"
+          disabledClassName="bg-secondary"
+          textClassName="text-white"
+        />
       </View>
     </View>
   );
