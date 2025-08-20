@@ -12,6 +12,8 @@ export * from './hr/index';
 // Accounting module types
 export * from './account/index';
 
+export * from './expense/index';
+
 // Other domain types
 export * from './ir/index';
 export * from './project/index';

@@ -1,11 +1,11 @@
 import { TAccountJournal } from '../account';
 import { OdooFalseOr, OdooIdNameTuple, TActivityMixin, TDatabaseAuditDetails, TMailThread } from '../global';
 
-export type THrExpenseState = 'draft' | 'approved' | 'confirm' | string;
+export type TExpenseState = 'draft' | 'approved' | 'confirm' | string;
 
 
 // Individual expense line item
-export type THrExpenseLine = {
+export type TExpenseLine = {
     id: number;
 
     // Invoice reference
@@ -31,7 +31,7 @@ export type THrExpenseLine = {
 } & TDatabaseAuditDetails;
 
 // Main expense report/sheet
-export type THrExpense = {
+export type TExpense = {
     id: number;
 
     // Header information
@@ -45,7 +45,7 @@ export type THrExpense = {
 
     // Expense lines
     expense_line_ids: number[];
-    expenses_ids: number[] | THrExpenseLine[]; // Alternative field name
+    expenses_ids: number[] | TExpenseLine[]; // Alternative field name
 
     // Totals
     total: number;
@@ -54,7 +54,7 @@ export type THrExpense = {
     untaxed_amount?: number;
 
     // State and workflow
-    state: THrExpenseState;
+    state: TExpenseState;
 
     // Display fields
     __last_update: string;
