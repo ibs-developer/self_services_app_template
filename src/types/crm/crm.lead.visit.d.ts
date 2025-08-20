@@ -1,0 +1,30 @@
+import { OdooFalseOr, OdooIdNameTuple, TActivityMixin, TDatabaseAuditDetails, TMailThread } from '../global';
+import { TCrmLead } from './crm.lead';
+
+export type TCrmLeadVisit = {
+    id: number;
+    display_name: string;
+    lead_id: OdooIdNameTuple | TCrmLead;
+    salesperson_id: OdooIdNameTuple;
+    visit_date: string;
+    actual_arrival_time: OdooFalseOr<string>;
+    departure_time: OdooFalseOr<string>;
+    duration: number;
+    visit_address: string;
+    latitude: number;
+    longitude: number;
+    location_accuracy: number;
+    state: string;
+    purpose: string;
+    summary: OdooFalseOr<string>;
+    notes: OdooFalseOr<string>;
+    outcome: OdooFalseOr<string>;
+    next_action: OdooFalseOr<string>;
+    follow_up_date: OdooFalseOr<string>;
+    partner_id: OdooIdNameTuple;
+    lead_name: string;
+    salesperson_user_id: OdooIdNameTuple;
+    is_overdue: boolean;
+    visit_location: string;
+    __last_update: string;
+} & TActivityMixin & TMailThread & TDatabaseAuditDetails;
