@@ -1,6 +1,6 @@
 import DetaileField from "@/components/reusable/deatileField";
 import NavigationHeader from "@/components/reusable/navigationHeader";
-import { useHrPayslipDetail } from "@/hooks/api/use.Hr.Payslip";
+import { useHrPayslipDetail } from "@/hooks/api/hr/use.Hr.Payslip";
 import { useLocalSearchParams } from "expo-router";
 import React from "react";
 import { RefreshControl, ScrollView, Text, View } from "react-native";
