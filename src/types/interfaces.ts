@@ -45,6 +45,7 @@ export interface IInputSelect<T extends FieldValues = FieldValues>
   defaultValue?: any;
   selections?: { id: any; name: string; value: string }[];
   string?: boolean;
+  isLoading?: boolean;
 }
 export interface ICheckbox<T extends FieldValues = FieldValues> extends IInput {
   control?: Control<T>;

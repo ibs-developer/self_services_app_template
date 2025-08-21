@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Animated, Pressable, Text, View } from "react-native";
+import { Animated, Pressable, ScrollView, Text, View } from "react-native";
 
 interface ISelectItemProps {
   item: { id: any; name: string; value: string };
@@ -21,12 +21,14 @@ interface ISelectGroupProps {
   opacityAnim: Animated.Value;
   selections?: { id: any; name: string; value: string }[];
   onSelect: (item: { id: any; name: string; value: string }) => void;
+  isLoading?: boolean;
 }
 const SelectGroup: FC<ISelectGroupProps> = ({
   scaleAnim,
   opacityAnim,
   selections,
   onSelect,
+  isLoading,
 }) => {
   return (
     <View>
@@ -36,11 +38,23 @@ const SelectGroup: FC<ISelectGroupProps> = ({
           opacity: opacityAnim,
           transformOrigin: "top",
         }}
-        className="bg-white mt-1 p-4 gap-4 rounded-b-xl"
+        className="bg-white min-h-[100] max-h-[250] mt-1 p-4 gap-4 rounded-b-xl"
       >
-        {selections?.map((item) => (
-          <SelectItem key={item.id} onPress={onSelect} item={item} />
-        ))}
+        <ScrollView>
+          {isLoading ? (
+            <View className="flex-1 justify-center items-center">
+              <Text>Loading . . .</Text>
+            </View>
+          ) : selections?.length ? (
+            selections?.map((item) => (
+              <SelectItem key={item.id} onPress={onSelect} item={item} />
+            ))
+          ) : (
+            <View>
+              <Text> No data </Text>
+            </View>
+          )}
+        </ScrollView>
       </Animated.View>
     </View>
   );

@@ -22,7 +22,7 @@ import {
   ScrollView,
   Text,
   useAnimatedValue,
-  View
+  View,
 } from "react-native";
 import Toast from "react-native-toast-message";
 
@@ -125,10 +125,6 @@ const Home = () => {
 
   // Check if user is inside the work location radius
   const backendPoint = {
-    // latitude: 30.9762326,
-    // longitude: 30.8673332,
-    // latitude: 30.07393,
-    // longitude: 31.22436,
     latitude: employee?.employee_latitude,
     longitude: employee?.employee_longitude,
   };
@@ -146,23 +142,16 @@ const Home = () => {
     };
 
     const distance = getDistance(currentCoords, backendPoint);
-    setIsInside(distance <= employee.work_location_radius);
+    setIsInside(distance <= employee.location_tolerance);
   };
   useEffect(() => {
     if (employee) {
-      if (employee?.is_location_restricted) {
+      if (employee?.location_restricted) {
         checkIsInSide();
       } else setIsInside(true);
     }
   }, [employee]);
 
-  // useEffect(() => {
-  //   if (Platform.OS === "ios") {
-  //     Alert.alert("Now The App is running on iOS");
-  //   } else {
-  //     Alert.alert("Now The App is running on Android");
-  //   }
-  // }, []);
   if (isLoading)
     return (
       <View className="flex-1 items-center justify-center">

@@ -257,6 +257,7 @@ export const InputSelect = <T extends FieldValues>({
   defaultValue,
   selections,
   string,
+  isLoading,
   ...inputProps
 }: IInputSelect<T>) => {
   const [open, setOpen] = useState(false);
@@ -309,7 +310,6 @@ export const InputSelect = <T extends FieldValues>({
               value={displayValue}
               error={error?.message}
               editable={false}
-              placeholder="Select Leave Type"
               icon={
                 open ? (
                   <IconChevronUp color="gray" strokeWidth={1.5} size={30} />
@@ -321,8 +321,9 @@ export const InputSelect = <T extends FieldValues>({
           </Pressable>
           {open && (
             <SelectGroup
+              isLoading={isLoading}
               onSelect={(item) => {
-                onChange(string? item.value : item.id);
+                onChange(string ? item.value : item.id);
                 setDisplayValue(item.name);
                 toggle();
               }}

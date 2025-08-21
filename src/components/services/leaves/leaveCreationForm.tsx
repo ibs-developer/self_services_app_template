@@ -26,7 +26,7 @@ const LeaveCreationForm = () => {
   const { back } = useRouter();
   const queryClient = useQueryClient();
   const { user } = useLoginStore();
-  const { data: timeOffTypes = [], isLoading } = useHrLeaveTypes({
+  const { data: timeOffTypes = [], isLoading: isTypesLoading } = useHrLeaveTypes({
     domain: `["|",["requires_allocation", "=", "no"],"&",["has_valid_allocation", "=", True],"|",["allows_negative", "=", True],"&",["virtual_remaining_leaves", ">", 0],["allows_negative", "=", False]]`,
   });
   const { data: leaves } = useHrLeaveList({
@@ -302,7 +302,7 @@ const LeaveCreationForm = () => {
         <Button
           title="Discard"
           onPress={handleDiscard}
-          disabled={isSubmitting || isLoading}
+          disabled={isSubmitting || isTypesLoading}
           className="bg-red-500 h-[50]"
           disabledClassName="bg-red-200"
           textClassName="text-white"
@@ -310,7 +310,7 @@ const LeaveCreationForm = () => {
         <Button
           title="Save & Close"
           onPress={submitForm(onFinalSubmit)}
-          isPressed={isSubmitting || isLoading}
+          isPressed={isSubmitting || isTypesLoading}
           disabled={haveLeave}
           className="bg-primary h-[50]"
           disabledClassName="bg-secondary"
