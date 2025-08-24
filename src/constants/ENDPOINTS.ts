@@ -71,6 +71,13 @@ const ENDPOINTS = {
       create: '/api/v1/resources/ir.attachment',
     },
   },
+  penalties: {
+    list: '/api/v1/resources/penalties',
+    show: (id: string) => `/api/v1/resources/penalties/${id}`,
+    create: '/api/v1/resources/penalties',
+    update: (id: string) => `/api/v1/resources/penalties/${id}`,
+    delete: (id: string) => `/api/v1/resources/penalties/${id}`,
+  },
   hr_employee: {
     login: '/api/v1/employee/login',
     forgetPassword: '/api/v1/employee/request-reset',

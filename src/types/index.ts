@@ -9,6 +9,9 @@ export * from './user/index';
 // HR module types (for specialized HR features)
 export * from './hr/index';
 
+// Penalty module types
+export * from './penalty/index';
+
 // Accounting module types
 export * from './account/index';
 
