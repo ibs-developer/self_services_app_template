@@ -1,7 +1,7 @@
 // src/api/apiClient.ts
-import axios from 'axios';
-import { Odoo_Domain } from '@env';
 import { useLoginStore } from '@/hooks/loginStore';
+import { Odoo_Domain } from '@env';
+import axios from 'axios';
 
 const api = axios.create({
   baseURL: Odoo_Domain,
@@ -27,7 +27,7 @@ api.interceptors.response.use(
     const state = useLoginStore.getState();
     const { resetUser } = state;
     // if unauthorized redirect to login page
-    if (status === 403) {
+    if (status === 401) {
       resetUser();
     }
     return Promise.reject(err);
