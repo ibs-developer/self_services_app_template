@@ -62,7 +62,7 @@ export const getApproverName = (leave: THrLeave) => {
   if (leave.second_approver_id && Array.isArray(leave.second_approver_id)) {
     return leave.second_approver_id[1] || 'Second Approver';
   }
-  return 'N/A';
+  return '---';
 };
 
 export const getLeaveTypeName = (leave: THrLeave) => {

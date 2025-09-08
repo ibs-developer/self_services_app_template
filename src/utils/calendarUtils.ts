@@ -14,7 +14,7 @@ export const mapHrLeaveToCalendarEvent = (
   types: THrLeaveType[],
 ) => {
   return leaves.map((leave) => {
-    const type = types.find((t) => t.id === leave.holiday_status_id?.[0]);
+    const type = types.find((t) => t.id ===  leave.holiday_status_id?.[0]);
     const colorKey = type?.color || 'default';
     const colorHex = colorMap[colorKey] || colorMap['default'];
 

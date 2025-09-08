@@ -1,5 +1,6 @@
 import Input, {
   ControlledInput,
+  InputDateAndTime,
   InputSelect,
 } from "@/components/reusable/input";
 import NavigationHeader from "@/components/reusable/navigationHeader";
@@ -66,6 +67,12 @@ const NewVisit = () => {
           name="visit_address"
           label="Visit Address"
           placeholder="Visit Address . . ."
+        />
+
+        <InputDateAndTime
+        control={control}
+        name="test"
+        label="Planned Visit Date"
         />
       </ScrollView>
     </View>

@@ -1,7 +1,4 @@
 import { dateToOdooTimeString } from "@/utils/calendarUtils";
-import DateTimePicker, {
-  DateTimePickerEvent,
-} from "@react-native-community/datetimepicker";
 import {
   IconAlarm,
   IconCalendar,
@@ -15,6 +12,7 @@ import moment from "moment";
 import React, { FC, useRef, useState } from "react";
 import { Controller, FieldValues } from "react-hook-form";
 import { Animated, Pressable, Text, TextInput, View } from "react-native";
+import DateTimePickerModal from "react-native-modal-datetime-picker";
 import {
   IControlledInput,
   IEncryptedPassword,
@@ -25,7 +23,7 @@ import {
 } from "../../types/interfaces";
 import SelectGroup from "./selectGroup";
 
-const Input: FC<IInput & { onClear?: () => void }> = ({
+const Input: FC<IInput> = ({
   label,
   className,
   labelClassName,
@@ -34,6 +32,7 @@ const Input: FC<IInput & { onClear?: () => void }> = ({
   value,
   onChangeText,
   onClear,
+  staticInput,
   ...props
 }) => {
   const secureTextEntry = !!props.secureTextEntry;
@@ -51,7 +50,7 @@ const Input: FC<IInput & { onClear?: () => void }> = ({
             value={value}
             onChangeText={onChangeText}
             secureTextEntry={isVisible}
-            editable={props.editable}
+            editable={staticInput ? false : props.editable}
             className="flex-1"
           />
           {secureTextEntry && (
@@ -60,7 +59,7 @@ const Input: FC<IInput & { onClear?: () => void }> = ({
               toggleVisibility={() => setIsVisible(!isVisible)}
             />
           )}
-          {value ? (
+          {staticInput ? null : value ? (
             <Pressable
               onPress={(e) => {
                 e.stopPropagation();
@@ -180,19 +179,65 @@ export const InputDate = <T extends FieldValues>({
               onClear={() => onChange("")}
             />
           </Pressable>
-          {openDate && (
-            <DateTimePicker
-              value={value || date}
-              mode="date"
-              display="calendar"
-              onChange={(event: DateTimePickerEvent, selectedDate?: Date) => {
-                setOpenDate(false);
-                if (event.type === "set" && selectedDate) {
-                  onChange(selectedDate);
-                }
-              }}
+
+          <DateTimePickerModal
+            isVisible={openDate}
+            mode="date" // هنا الفرق الكبير
+            date={value || date}
+            onConfirm={(test) => {
+              onChange(test);
+              setOpenDate(false);
+            }}
+            onCancel={() => setOpenDate(false)}
+            confirmTextIOS="تأكيد"
+            cancelTextIOS="إلغاء"
+          />
+        </>
+      )}
+    />
+  );
+};
+export const InputDateAndTime = <T extends FieldValues>({
+  name,
+  control,
+  rules,
+  defaultValue,
+  date = new Date(),
+  ...inputProps
+}: IInputDate<T>) => {
+  const [openDate, setOpenDate] = useState(false);
+
+  return (
+    <Controller
+      name={name}
+      control={control}
+      rules={rules}
+      defaultValue={defaultValue}
+      render={({ field: { onChange, value }, fieldState: { error } }) => (
+        <>
+          <Pressable className="w-[100%]" onPress={() => setOpenDate(true)}>
+            <Input
+              {...inputProps}
+              editable={false}
+              placeholder={moment(date).format("YYYY/MM/DD hh:mm a")}
+              value={value ? moment(value).format("YYYY/MM/DD hh:mm a") : ""}
+              error={error?.message}
+              icon={<IconCalendar color="gray" strokeWidth={1.5} size={30} />}
+              onClear={() => onChange("")}
             />
-          )}
+          </Pressable>
+          <DateTimePickerModal
+            isVisible={openDate}
+            mode="datetime" // هنا الفرق الكبير
+            date={value || date}
+            onConfirm={(test) => {
+              onChange(test);
+              setOpenDate(false);
+            }}
+            onCancel={() => setOpenDate(false)}
+            confirmTextIOS="تأكيد"
+            cancelTextIOS="إلغاء"
+          />
         </>
       )}
     />
@@ -228,23 +273,21 @@ export const InputTime = <T extends FieldValues>({
               icon={<IconAlarm color="gray" strokeWidth={1.5} size={30} />}
             />
           </Pressable>
-          {openTime && (
-            <DateTimePicker
-              value={time || date}
-              mode="time"
-              display="clock"
-              onChange={(event: DateTimePickerEvent, selectedDate?: Date) => {
-                setOpenTime(false);
-                console.log("Selected Date:", selectedDate);
-                if (event.type === "set" && selectedDate) {
-                  const formatted = dateToOdooTimeString(selectedDate);
-                  console.log("Formatted Time:", formatted);
-                  setTime(selectedDate);
-                  onChange(formatted);
-                }
-              }}
-            />
-          )}
+
+          <DateTimePickerModal
+            isVisible={openTime}
+            mode="time" // هنا الفرق الكبير
+            date={time || date}
+            onConfirm={(time) => {
+              const formatTime = dateToOdooTimeString(time);
+              setTime(time);
+              onChange(formatTime);
+              setOpenTime(false);
+            }}
+            onCancel={() => setOpenTime(false)}
+            confirmTextIOS="تأكيد"
+            cancelTextIOS="إلغاء"
+          />
         </>
       )}
     />

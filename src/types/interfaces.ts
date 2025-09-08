@@ -12,6 +12,8 @@ export interface IInput extends Omit<TextInputProps, "defaultValue"> {
   label?: string;
   error?: string;
   icon?: ReactNode;
+  staticInput?: boolean;
+  onClear?: () => void
 }
 
 export interface IControlledInput<T extends FieldValues = FieldValues>
@@ -134,6 +136,7 @@ export interface IBadge {
 export interface IPart {
   title: string;
   value: string | number;
+  small?: boolean;
 }
 export interface ILeaveCard extends PressableProps {
   leave: THrLeave;

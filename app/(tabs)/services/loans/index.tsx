@@ -91,6 +91,23 @@ const Loans = () => {
     }, [])
   );
 
+  const getFilteredLoans = () => {
+    if (!loans || loans.length === 0) {
+      return [];
+    }
+
+    const now = new Date();
+    // Reset time to start of day for accurate comparison
+    switch (activeFilter) {
+      case "past":
+        return loans?.filter((loan) => new Date(loan.payment_date) < now);
+      case "upcoming":
+        return loans?.filter((loan) => new Date(loan.payment_date) >= now);
+      default:
+        return loans;
+    }
+  };
+
   if (isLoansLoading) {
     return (
       <View className="flex-1 bg-background justify-center items-center">
@@ -116,7 +133,7 @@ const Loans = () => {
         }
       />
       <FlatList
-        data={loansData}
+        data={getFilteredLoans()}
         keyExtractor={(item) => item.id.toString()}
         refreshing={isLoansRefetching}
         onRefresh={loansRefetch}
@@ -147,6 +164,13 @@ const Loans = () => {
           </View>
         }
         renderItem={({ item: loan }) => <LoanCard loan={loan} />}
+        ListEmptyComponent={
+          <View className="flex-1 justify-center items-center py-8">
+            <Text className="text-gray-500 dark:text-gray-400 text-center">
+              No Loans requests found
+            </Text>
+          </View>
+        }
       />
     </View>
   );

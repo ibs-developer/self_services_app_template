@@ -47,7 +47,11 @@ const LeaveCard: FC<ILeaveCard> = ({ leave }) => {
             />
             <Part
               title="Leave Type"
-              value={leave.holiday_status_id?.[1] || "N/A"}
+              value={
+                Array.isArray(leave.holiday_status_id)
+                  ? leave.holiday_status_id?.[1]
+                  : "---"
+              }
             />
             <Part title="Approved By" value={getApproverName(leave)} />
           </View>
